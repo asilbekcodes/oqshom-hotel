@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adina Hotel</title>
+
+    <!-- 🌀 Google Fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- 🧠 Google Fonts (deferred load) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lato&family=Playfair+Display&family=Poppins&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+
+    <!-- ✅ Fallback agar font kechiksa -->
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lato&family=Playfair+Display&family=Poppins&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <!-- 🖼️ Favicon -->
+    <link
+      rel="shortcut icon"
+      href="./src/assets/img/favicon.png"
+      type="image/x-icon"
+    />
+
+    <link rel="preconnect" href="https://hotel.pythonanywhere.com" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- ⚙️ Asosiy React skript -->
+    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- 💬 Tawk.to Chat (async, deferred) -->
+    <script>
+      window.addEventListener("load", function () {
+        var s1 = document.createElement("script");
+        s1.src = "https://embed.tawk.to/687e063520e7e7192058ccda/1j0m4gh23";
+        s1.async = true;
+        s1.charset = "UTF-8";
+        s1.setAttribute("crossorigin", "*");
+        document.body.appendChild(s1);
+      });
+    </script>
+  </body>
+</html>
