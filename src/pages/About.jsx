@@ -7,6 +7,7 @@ import Animation from "../components/Animation";
 import { useHotelContext } from "../context/HeroSlider";
 import axios from "axios";
 import { baseUrl } from "../api/BaseUrl";
+import { useTranslation } from "react-i18next";
 
 function About() {
   const data = {
@@ -21,6 +22,7 @@ function About() {
       additionalData.find((item) => item.page === "about")?.additional || [];
 
       const [count, setCount] = useState('');
+      const { t } = useTranslation();
 
     const countData = () => {
       axios.get(`${baseUrl}about/result/`)
@@ -44,10 +46,7 @@ function About() {
         <Animation dataAos="zoom-in">
           <div className="my-20">
             <p className="font-tertiary text-[20px] lg:text-[32px] text-center underline underline-offset-8">
-              "We invite you to appreciate the hospitality and quality of
-              service of our hotel, which proudly offers all types of rooms and
-              a successful team ready to create an unforgettable experience for
-              every guest."
+              {t("text")}
             </p>
 
             {/* Scrollda ko‘rinadigan count animatsiya */}

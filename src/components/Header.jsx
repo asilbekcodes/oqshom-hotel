@@ -3,6 +3,8 @@ import LogoDark from "../assets/img/logo-dark.svg";
 import LogoWhite from "../assets/img/logo-white.svg";
 import { FiMenu, FiX } from "react-icons/fi"; // Hamburger va Close icon
 import ModalComponent from "./ModalComponent";
+import LanguageSelector from "./LanguageSelector";
+import { useTranslation } from "react-i18next";
 
 function Header() {
   const [header, setHeader] = useState(false);
@@ -20,27 +22,31 @@ function Header() {
 
   const navLinks = () => {
     const token = localStorage.getItem("accessToken");
+    const { t } = useTranslation();
 
     return (
       <>
         <a href="/" className="hover:text-accent transition">
-          Home
+          {t("nav_home")}
         </a>
         <a href="/about" className="hover:text-accent transition">
-          About
+          {t("nav_about")}
         </a>
         <a href="/virtual" className="hover:text-accent transition">
-          Rooms
+          {t("nav_rooms")}
         </a>
         <a href="/serveces" className="hover:text-accent transition">
-          Services
+          {t("nav_services")}
         </a>
         <a href="/spa" className="hover:text-accent transition">
-          Spa
+          {t("nav_spa")}
         </a>
         <a href="/contact" className="hover:text-accent transition">
-          Contact
+          {t("nav_contact")}
         </a>
+        <div className="hover:text-accent transition">
+          <LanguageSelector /> 
+        </div>
         {/* {token ? (
           <a href="/profil" className="hover:text-accent transition">
             Profil

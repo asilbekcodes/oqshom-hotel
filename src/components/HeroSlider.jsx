@@ -11,6 +11,8 @@ import Img2 from "../assets/img/heroSlider/2.jpg";
 import Img3 from "../assets/img/heroSlider/3.jpg";
 import Animation from "./Animation";
 import { useHotelContext } from "../context/HeroSlider";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const slides = [
   {
@@ -32,8 +34,10 @@ const slides = [
 
 function HeroSlider() {
   const { additionalData, loading, error } = useHotelContext();
-  const homeData = additionalData.find((item) => item.page === "home")?.additional || [];
-  const slidesToShow = homeData.length > 0 ? homeData : slides;  
+  const homeData =
+    additionalData.find((item) => item.page === "home")?.additional || [];
+  const slidesToShow = homeData.length > 0 ? homeData : slides;
+  const { t } = useTranslation();
 
   return (
     <Swiper
@@ -58,9 +62,11 @@ function HeroSlider() {
                 <h1 className="text-[32px] font-primary uppercase tracking-[2px] max-w-[920px] lg:text-[68px] leading-tight mb-6 mx-auto">
                   {title}
                 </h1>
-                <button className="btn btn-lg btn-primary mx-auto">
-                  See our rooms
-                </button>
+                <Link to="/virtual">
+                  <button className="btn btn-lg btn-primary mx-auto">
+                    {t("see_rooms")}
+                  </button>
+                </Link>
               </Animation>
             </div>
 

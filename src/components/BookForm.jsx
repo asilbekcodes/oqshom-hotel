@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
 import CheckIn from './CheckIn'
 import CheckOut from './CheckOut'
 import AdultsDropdown from './AdultsDropdown'
-import KidsDropdown from './KidsDropdown'
 import { useRoomsContext } from '../context/RoomsContext'
+import { useTranslation } from 'react-i18next'
 
 function BookForm() {
+  const {t} = useTranslation()
 
   const {handleClick} = useRoomsContext()
   return (
@@ -23,7 +23,7 @@ function BookForm() {
         {/* <div className='flex-1 border-r'>
           <KidsDropdown />
         </div> */}
-        <button onClick={(e) => handleClick(e)} type='submit' className='btn btn-primary'>Check now</button>
+        <button onClick={(e) => handleClick(e)} type='submit' className='btn btn-primary'>{t('checkNow')}</button>
       </div>
     </form>
   )

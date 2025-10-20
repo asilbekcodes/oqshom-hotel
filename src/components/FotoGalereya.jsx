@@ -15,11 +15,13 @@ import img7 from "../assets/img/rooms/7-lg.png";
 
 import axios from "axios";
 import { baseUrl } from "../api/BaseUrl"; // baseUrl = "http://your-api.com/api/" kabi bo‘lishi kerak
+import { useTranslation } from "react-i18next";
 
 function FotoGalereya() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [galleryImages, setGalleryImages] = useState([]);
+  const { t } = useTranslation();
 
   const localImages = [img1, img2, img3, img4, img5, img6, img7];
   const imagesToShow = galleryImages.length > 0 ? galleryImages : localImages;
@@ -81,14 +83,13 @@ function FotoGalereya() {
   }, [isModalOpen]);
 
   return (
-    <div className="mt-20 px-5">
+    <div className="mt-20">
       <div className="mb-10">
         <h2 className="text-4xl font-bold text-gray-800 mb-5">
-          ATMOSPHERE OF OUR HOTEL
+          {t("atmosphere_title")}
         </h2>
         <p className="text-gray-600 max-w-3xl text-lg leading-relaxed">
-          Welcome to our photo gallery! Here you will find many photos that will
-          help you better imagine our hotel and its surroundings.
+          {t("atmosphere_desc")}
         </p>
       </div>
 

@@ -97,7 +97,7 @@ function RoomDetails( ) {
       >
         <div className="absolute top-0 w-full h-full bg-black/70"></div>
         <h1 className="text-6xl text-white z-20 font-primary text-center">
-          {title} Details
+          {title}
         </h1>
       </div>
       <div className="container mx-auto">

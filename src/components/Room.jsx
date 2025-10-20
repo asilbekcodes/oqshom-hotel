@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { BsArrowsFullscreen, BsPeople } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
@@ -13,6 +14,8 @@ function Room({ room }) {
     adults,
     // kids
   } = room;
+
+  const { t } = useTranslation();
   return (
     <div className="bg-white shadow-2xl min-h-[500px] group">
       <div className="overflow-hidden">
@@ -29,8 +32,8 @@ function Room({ room }) {
               <BsArrowsFullscreen className="text-[15px]" />
             </div>
             <div className="flex gap-x-1 items-center text-sm">
-              <div>Size</div>
-              <div>{size}m2</div>
+              <div>{t("size")}</div>
+              <div>{size}m²</div>
             </div>
           </div>
           <div className="flex items-center gap-x-2">
@@ -38,7 +41,7 @@ function Room({ room }) {
               <BsPeople className="text-[18px]" />
             </div>
             <div className="flex gap-x-1 items-center text-sm">
-              <div>Max People</div>
+              <div>{t("max_people")}</div>
               <div>{adults}</div>
             </div>
           </div>
@@ -56,7 +59,7 @@ function Room({ room }) {
         to={`/room/${id}`}
         className="btn btn-secondary btn-sm max-w-[280px] mx-auto"
       >
-        Book now from ${price}
+        {t("book_now", { price })}
       </Link>
     </div>
   );
