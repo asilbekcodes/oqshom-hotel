@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { baseUrl } from "../api/BaseUrl";
+import { api } from "../api/BaseUrl";
 
 const InfoContext = createContext();
 
@@ -12,8 +12,9 @@ export const InfoProvider = ({ children }) => {
   const fetchInfoData = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(
-        `${baseUrl}about/`
+      const res = await axios
+      api.get(
+        `about/`
       );
       setInfoData(res.data);
     } catch (err) {

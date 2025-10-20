@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -14,7 +14,7 @@ import img6 from "../assets/img/heroSlider/rooms.jpg";
 import img7 from "../assets/img/rooms/7-lg.png";
 
 import axios from "axios";
-import { baseUrl } from "../api/BaseUrl"; // baseUrl = "http://your-api.com/api/" kabi bo‘lishi kerak
+import { api, } from "../api/BaseUrl"; // baseUrl = "http://your-api.com/api/" kabi bo‘lishi kerak
 import { useTranslation } from "react-i18next";
 
 function FotoGalereya() {
@@ -24,11 +24,12 @@ function FotoGalereya() {
   const { t } = useTranslation();
 
   const localImages = [img1, img2, img3, img4, img5, img6, img7];
-  const imagesToShow = galleryImages.length > 0 ? galleryImages : localImages;
+  const imagesToShow = galleryImages?.length > 0 ? galleryImages : localImages;
 
   const fetchGallery = async () => {
     try {
-      const res = await axios.get(`${baseUrl}hotel/hotel-gallery/`);
+      const res = await axios
+      api.get(`hotel/hotel-gallery/`);
       setGalleryImages(res.data); // serverdan rasm list keladi
     } catch (err) {
       console.log("Rasm yuklanmadi:", err);

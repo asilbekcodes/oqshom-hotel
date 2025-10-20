@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -35,7 +34,7 @@ const slides = [
 function HeroSlider() {
   const { additionalData, loading, error } = useHotelContext();
   const homeData =
-    additionalData.find((item) => item.page === "home")?.additional || [];
+    additionalData?.find((item) => item.page === "home")?.additional || [];
   const slidesToShow = homeData.length > 0 ? homeData : slides;
   const { t } = useTranslation();
 

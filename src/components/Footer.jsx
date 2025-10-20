@@ -10,7 +10,7 @@ import {
 import { FaArrowUp } from "react-icons/fa6";
 import logo from "../assets/img/logo-white.svg";
 import axios from "axios";
-import { baseUrl } from "../api/BaseUrl";
+import { api } from "../api/BaseUrl";
 
 const iconMap = {
   telegram: FaTelegramPlane,
@@ -47,7 +47,7 @@ function Footer() {
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}hotel/social-media/`) // API manzilini o'zingizga moslashtiring
+      api.get(`hotel/social-media/`) // API manzilini o'zingizga moslashtiring
       .then((res) => {
         setLinks(res.data);
       })

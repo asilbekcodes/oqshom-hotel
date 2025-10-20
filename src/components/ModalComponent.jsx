@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { baseUrl } from "../api/BaseUrl";
+import { api } from "../api/BaseUrl";
 // import resent from "../../assets/icons/Ellipse 286.svg";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
@@ -40,7 +40,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
   const handleConfirmPhone = (e) => {
     e.preventDefault();
     axios
-      .post(`${baseUrl}users/signup/`, {
+      api.post(`users/signup/`, {
         email,
         password,
         confirm_password: confirmPassword,
@@ -78,7 +78,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
     if (code.length !== 6) return;
     const token = localStorage.getItem("accessToken");
     axios
-      .post(`${baseUrl}users/verify/`, { code }, { headers: { Authorization: `Bearer ${token}` } })
+      api.post(`users/verify/`, { code }, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
         localStorage.setItem("userToken", res.data.access);
         localStorage.setItem("refreshToken", res.data.refresh);
@@ -111,7 +111,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post(`${baseUrl}users/signin/`, {
+      api.post(`users/signin/`, {
         email,
         password,
       })

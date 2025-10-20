@@ -70,7 +70,7 @@ const ComfortSection = () => {
               className="w-full h-56 object-cover group-hover:scale-110 duration-300 transition-all"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white px-3 py-2">
-              {t("restaurants")}
+              {t("restaurant")}
             </div>
           </div>
         </div>

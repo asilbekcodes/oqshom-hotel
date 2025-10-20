@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { baseUrl } from "../api/BaseUrl";
+import { createContext, useContext, useEffect, useState } from "react";
+import { api } from "../api/BaseUrl";
 
 const RoomsContext = createContext();
 
@@ -17,7 +17,8 @@ export const RoomsProvider = ({ children }) => {
   const roomData = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`${baseUrl}rooms/all`);
+      const res = await axios
+      api.get(`rooms/all`);
       setOriginalRooms(res.data);
       setRooms(res.data);
     } catch (err) {

@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { baseUrl } from "../api/BaseUrl";
+import { api } from "../api/BaseUrl";
 
 const HotelContext = createContext();
 
@@ -12,9 +12,8 @@ export const HotelProvider = ({ children }) => {
   const fetchAdditionalData = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(
-        `${baseUrl}hotel/hotel-slider/`
-      );
+      const res = await axios
+      api.get(`hotel/hotel-slider/`);
       setAdditionalData(res.data);
     } catch (err) {
       setError(err.message || "Something went wrong");

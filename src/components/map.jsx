@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import axios from "axios";
-import { baseUrl } from "../api/BaseUrl";
+import { api } from "../api/BaseUrl";
 
 // Marker ikonkani to‘g‘rilash (Leaflet default marker ishlashi uchun)
 delete L.Icon.Default.prototype._getIconUrl;
@@ -20,8 +20,9 @@ function MapView() {
   const [locations, setLocations] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${baseUrl}hotel/location/`)
+    axios;
+    api
+      .get(`hotel/location/`)
       .then((res) => {
         setLocations(res.data);
       })
@@ -34,7 +35,7 @@ function MapView() {
     <MapContainer
       center={[38.865275, 65.808873]}
       zoom={13}
-      style={{ height: "400px", width: "100%", zIndex: 1, }}
+      style={{ height: "400px", width: "100%", zIndex: 1 }}
     >
       <TileLayer
         url="https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}"
@@ -42,10 +43,7 @@ function MapView() {
       />
 
       {locations.map((loc) => (
-        <Marker
-          key={loc.id}
-          position={[loc.longitude, loc.latitude]}
-        >
+        <Marker key={loc.id} position={[loc.longitude, loc.latitude]}>
           <Popup>{loc.title}</Popup>
         </Marker>
       ))}

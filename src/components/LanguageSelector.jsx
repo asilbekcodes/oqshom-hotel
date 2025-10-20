@@ -7,6 +7,8 @@ const languages = [
   { code: "en", label: "English" },
   { code: "ru", label: "Русский" },
   { code: "uz", label: "O‘zbekcha" },
+  { code: "ar", label: "العربية" },   // Arab tili
+  { code: "zh", label: "中文" },      // Xitoy tili
 ];
 
 export default function LanguageSelector() {
@@ -16,9 +18,11 @@ export default function LanguageSelector() {
     languages.find((l) => l.code === i18n.language) || languages[0];
 
   const changeLanguage = (lang) => {
+    if (i18n.language === lang) return setOpen(false);
     i18n.changeLanguage(lang);
     localStorage.setItem("lang", lang);
     setOpen(false);
+    window.location.reload();
   };
 
   return (
@@ -39,7 +43,9 @@ export default function LanguageSelector() {
               key={lang.code}
               onClick={() => changeLanguage(lang.code)}
               className={`block w-full text-left px-3 py-2 text-sm hover:bg-gray-100 ${
-                i18n.language === lang.code ? "bg-gray-50 font-medium text-black" : "text-black"
+                i18n.language === lang.code
+                  ? "bg-gray-50 font-medium text-black"
+                  : "text-black"
               }`}
             >
               {lang.label}
