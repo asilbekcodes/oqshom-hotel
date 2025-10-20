@@ -192,7 +192,7 @@ function RoomDetails( ) {
                   </Menu>
                 </div>
 
-                <div className="h-[60px]">
+                {/* <div className="h-[60px]">
                   <Menu as="div" className={"w-full h-full bg-white relative"}>
                     <Menu.Button
                       className={
@@ -203,7 +203,7 @@ function RoomDetails( ) {
                       <BsChevronDown className="text-base text-accent-hover" />
                     </Menu.Button>
                   </Menu>
-                </div>
+                </div> */}
               </div>
               <button onClick={handleBron} className="btn btn-lg btn-primary  w-full">
                 book now for ${price}
