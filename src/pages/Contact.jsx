@@ -6,7 +6,7 @@ import PhoneInput from "react-phone-number-input/input";
 import Animation from "../components/Animation";
 import MapView from "../components/map";
 import axios from "axios";
-import { baseUrl } from "../api/BaseUrl";
+import { api } from "../api/BaseUrl";
 
 function Contact() {
   const [reasons, setReasons] = useState([]);
@@ -21,7 +21,7 @@ function Contact() {
 
   const getSelect = () => {
     axios
-      .get(`${baseUrl}hotel/reason/`)
+      api.get(`hotel/reason/`)
       .then((res) => setReasons(res.data))
       .catch((err) => console.log(err));
   };
@@ -41,7 +41,7 @@ function Contact() {
     e.preventDefault();
 
     axios
-      .post(`${baseUrl}hotel/contact/`, {
+      api.post(`hotel/contact/`, {
         reason,
         first_name: firstName,
         last_name: lastName,

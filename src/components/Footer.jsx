@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState,  } from "react";
 import {
   FaVk,
   FaTelegramPlane,
@@ -8,9 +8,10 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { FaArrowUp } from "react-icons/fa6";
-import logo from "../assets/img/logo-white.svg";
 import axios from "axios";
 import { api } from "../api/BaseUrl";
+import oqshom_logo from "../assets/img/oqshom_logo.png";
+import { useTranslation } from "react-i18next";
 
 const iconMap = {
   telegram: FaTelegramPlane,
@@ -23,6 +24,7 @@ const iconMap = {
 
 function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
 
   const paymentLogos = [
     {
@@ -61,7 +63,7 @@ function Footer() {
       <div className="container mx-auto flex flex-col items-center gap-6 text-sm md:flex-row md:justify-between">
         {/* Address */}
         <div className="text-center md:text-left font-semibold">
-          <img src={logo} alt="" />
+          <img className="w-44" src={oqshom_logo} alt="logo" />
         </div>
 
         {/* Social Icons */}
@@ -87,14 +89,14 @@ function Footer() {
         {/* Contact */}
         <div className="text-center md:text-right">
           <a
-            href="mailto:info@hotelsultan.uz"
+            href="mailto:oqshomplaza@mail.ru"
             className="text-[#e3af5e] font-semibold hover:underline"
           >
-            info@hoteladina.uz
+            oqshomplaza@mail.ru
           </a>
           <br />
           <a href="#" className="font-semibold hover:underline">
-            Public offer
+            {t("public_offer")}
           </a>
         </div>
       </div>
@@ -122,7 +124,7 @@ function Footer() {
       </div>
 
       <div className="mt-6 text-center text-lg">
-        &copy; {currentYear}, All Rights Reserved
+        &copy; {currentYear}, {t("all_rigths_reserved")}
       </div>
     </footer>
   );

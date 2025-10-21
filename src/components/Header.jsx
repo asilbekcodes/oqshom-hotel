@@ -5,6 +5,7 @@ import { FiMenu, FiX } from "react-icons/fi"; // Hamburger va Close icon
 import ModalComponent from "./ModalComponent";
 import LanguageSelector from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
+import oqshom_logo from "../assets/img/oqshom_logo.png";
 
 function Header() {
   const [header, setHeader] = useState(false);
@@ -73,7 +74,7 @@ function Header() {
         <a href="/">
           <img
             className="w-[160px]"
-            src={header ? LogoDark : LogoWhite}
+            src={oqshom_logo}
             alt="logo"
           />
         </a>

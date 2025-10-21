@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
 import ScrollToTop from "../components/ScrollToTop";
 import axios from "axios";
-import { baseUrl } from "../api/BaseUrl";
+import { api } from "../api/BaseUrl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -27,7 +27,8 @@ function RoomDetails( ) {
 
   const getRooms = async () => {
     try {
-      const res = await axios.get(`${baseUrl}rooms/${id}`);
+      const res = await axios 
+      api.get(`rooms/${id}`);
       const data = res.data;
       setRooms(data);
       const excluded = data.booking_times.flatMap((booking) => {
@@ -63,7 +64,7 @@ function RoomDetails( ) {
   
   const roomBron = () => {
     const token = localStorage.getItem("accessToken");
-    axios.post(`${baseUrl}rooms/booking/`, {
+    api.axios.post(`rooms/booking/`, {
       room: id,
       start_date: format(new Date(startDate), "yyyy-MM-dd"),
       end_date: format(new Date(endDate), "yyyy-MM-dd"),

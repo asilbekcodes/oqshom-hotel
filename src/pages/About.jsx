@@ -6,7 +6,7 @@ import CountItem from "../components/CountItem"; // Yangi komponent
 import Animation from "../components/Animation";
 import { useHotelContext } from "../context/HeroSlider";
 import axios from "axios";
-import { baseUrl } from "../api/BaseUrl";
+import { api } from "../api/BaseUrl";
 import { useTranslation } from "react-i18next";
 
 function About() {
@@ -25,7 +25,8 @@ function About() {
       const { t } = useTranslation();
 
     const countData = () => {
-      axios.get(`${baseUrl}about/result/`)
+      axios
+      api.get(`about/result/`)
       .then((res) => {
         setCount(res.data);
       })

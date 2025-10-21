@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { baseUrl } from "../api/BaseUrl";
+import { api } from "../api/BaseUrl";
 import axios from "axios";
 import img from "../assets/img/rooms/7-lg.png";
 
@@ -17,14 +17,14 @@ function Profil() {
 
   const profileData = () => {
     axios
-      .get(`${baseUrl}users/`)
+      api.get(`users/`)
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   };
 
   const orderData = () => {
     axios
-      .get(`${baseUrl}rooms/booking/`)
+      api.get(`rooms/booking/`)
       .then((res) => setOrder(res.data))
       .catch((err) => console.log(err));
   };
