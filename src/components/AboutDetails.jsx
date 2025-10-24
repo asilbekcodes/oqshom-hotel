@@ -1,9 +1,10 @@
 import { useInfoContext } from "../context/InfoContext";
 
 function AboutDetails() {
-  const { infoData,} = useInfoContext();
+  const { infoData } = useInfoContext();
 
-  const aboutData = infoData.find((item) => item.page === "about")?.about || [];
+  // Agar infoData undefined bo‘lsa, bo‘sh massiv sifatida ishlatamiz
+  const aboutData = infoData?.find((item) => item.page === "about")?.about || [];
 
   return (
     <div className="space-y-10 lg:space-y-24 py-10">

@@ -49,7 +49,7 @@
   "see_rooms": "Xonalarni ko‘rish",
   "size": "Hajmi",
   "max_people": "Odamlar soni",
-  "book_now": "${{price}} bron qilish",
+  "book_now": "{{price}} bron qilish",
   "hotel_name": "Hotel & Spa Oqshom",
   "rooms_title": "Xonalar va Suitlar",
   "text": "Sizni mehmonxonamizning mehmondo‘stligi va xizmat sifati bilan tanishishga taklif etamiz. Biz barcha turdagi xonalarni taqdim etishdan faxrlanamiz va har bir mehmon uchun unutilmas tajriba yaratishga tayyor jamoamiz bor.",

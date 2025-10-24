@@ -18,17 +18,19 @@ import { BsCalendar } from "react-icons/bs";
 import { eachDayOfInterval, format, parseISO } from "date-fns";
 import ModalComponent from "../components/ModalComponent";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
-function RoomDetails( ) {
+function RoomDetails() {
   const { id } = useParams();
   const [rooms, setRooms] = useState({});
   const [excludeDates, setExcludeDates] = useState([]);
-  // const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language; // hozirgi tilni olish (masalan: 'uz' yoki 'en')
 
   const getRooms = async () => {
     try {
-      const res = await axios 
-      api.get(`rooms/${id}`);
+      const res = await api.get(`rooms/${id}`);
       const data = res.data;
       setRooms(data);
       const excluded = data.booking_times.flatMap((booking) => {
@@ -55,39 +57,52 @@ function RoomDetails( ) {
     rules,
     price,
     adults,
-    kids,
+    // kids,
   } = rooms;
 
   const [startDate, setStartDate] = useState(false);
   const [endDate, setEndDate] = useState(false);
 
-  
   const roomBron = () => {
     const token = localStorage.getItem("accessToken");
-    api.axios.post(`rooms/booking/`, {
-      room: id,
-      start_date: format(new Date(startDate), "yyyy-MM-dd"),
-      end_date: format(new Date(endDate), "yyyy-MM-dd"),
-    }, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-    .then((res) => {
-      toast.success('Succes booking');
-    })
-    .catch((err) => {
-      toast.error(err.response.data.non_field_errors[0] || "Xatolik yuz berdi!");
-    })
-  }
+    api
+      .post(
+        `rooms/booking/`,
+        {
+          room: id,
+          start_date: format(new Date(startDate), "yyyy-MM-dd"),
+          end_date: format(new Date(endDate), "yyyy-MM-dd"),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        toast.success("Succes booking");
+      })
+      .catch((err) => {
+        toast.error(
+          err.response.data.non_field_errors[0] || "Xatolik yuz berdi!"
+        );
+      });
+  };
   const handleBron = () => {
     const token = localStorage.getItem("accessToken");
     if (!token) {
       setIsLogin(true);
-    }else if (startDate && endDate && token) {
+    } else if (startDate && endDate && token) {
       roomBron();
+    } else if (!startDate || !endDate) {
+      toast.error("Sana kiritilmadi!");
+    } else {
+      toast.error("Xatolik yuz berdi!");
     }
-  }
+  };
+
+  const currencySymbol = currentLang === "uz" ? "so'm" : "";
+  const formattedPrice = `${price} ${currencySymbol}`;
 
   return (
     <section>
@@ -206,8 +221,11 @@ function RoomDetails( ) {
                   </Menu>
                 </div> */}
               </div>
-              <button onClick={handleBron} className="btn btn-lg btn-primary  w-full">
-                book now for ${price}
+              <button
+                onClick={handleBron}
+                className="btn btn-lg btn-primary  w-full"
+              >
+                {t("book_now", { price: formattedPrice })}
               </button>
             </div>
             <div>
@@ -229,7 +247,7 @@ function RoomDetails( ) {
           </div>
         </div>
       </div>
-      {/* <ModalComponent isLoginModal={isLogin} onClose={() => setIsLogin(false)} setIsLogin={setIsLogin}/> */}
+      <ModalComponent isLoginModal={isLogin} onClose={() => setIsLogin(false)} setIsLogin={setIsLogin}/>
     </section>
   );
 }

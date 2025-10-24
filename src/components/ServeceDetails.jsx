@@ -5,7 +5,7 @@ function ServeceDetails() {
   const { infoData, loading, error } = useInfoContext();
 
   const servicesData =
-    infoData.find((item) => item.page === "services")?.about || [];
+    infoData?.find((item) => item.page === "services")?.about || [];
 
   return (
     <div className="space-y-10 lg:space-y-24 py-10">

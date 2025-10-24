@@ -17,8 +17,7 @@ export const RoomsProvider = ({ children }) => {
   const roomData = async () => {
     setLoading(true);
     try {
-      const res = await axios
-      api.get(`rooms/all`);
+      const res = await api.get("rooms/all");
       setOriginalRooms(res.data);
       setRooms(res.data);
     } catch (err) {
@@ -40,9 +39,7 @@ export const RoomsProvider = ({ children }) => {
     const totalGuests =
       parseInt(adults?.split(" ")[0]) + parseInt(kids?.split(" ")[0]);
 
-    const filtered = originalRooms.filter(
-      (room) => totalGuests <= room.adults
-    );
+    const filtered = originalRooms.filter((room) => totalGuests <= room.adults);
 
     // Soxta yuklanishni ko‘rsatish uchun 1.5s delay
     setTimeout(() => {

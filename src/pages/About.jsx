@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import bgImg from "../assets/img/heroSlider/aboutHotel.jpg";
 import HeroServeces from "../components/HeroServeces";
 import AboutDetails from "../components/AboutDetails";
-import CountItem from "../components/CountItem"; // Yangi komponent
+import CountItem from "../components/CountItem";
 import Animation from "../components/Animation";
 import { useHotelContext } from "../context/HeroSlider";
-import axios from "axios";
 import { api } from "../api/BaseUrl";
 import { useTranslation } from "react-i18next";
 
@@ -17,28 +16,28 @@ function About() {
     image: bgImg,
   };
 
-    const { additionalData, loading, error } = useHotelContext();
-    const aboutData =
-      additionalData.find((item) => item.page === "about")?.additional || [];
+  const { additionalData, loading, error } = useHotelContext();
+  const aboutData =
+    additionalData?.find((item) => item.page === "about")?.additional || [];
 
-      const [count, setCount] = useState('');
-      const { t } = useTranslation();
+  const [count, setCount] = useState([]);
+  const { t } = useTranslation();
 
-    const countData = () => {
-      axios
-      api.get(`about/result/`)
+  const countData = () => {
+    api
+      .get(`about/result/`)
       .then((res) => {
         setCount(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-    }
+  };
 
-    useEffect(() => {
-      countData()
-    }, [])
-    
+  useEffect(() => {
+    countData();
+  }, []);
+
   return (
     <div>
       <HeroServeces data={aboutData.length > 0 ? aboutData[0] : data} />
@@ -52,7 +51,7 @@ function About() {
 
             {/* Scrollda ko‘rinadigan count animatsiya */}
             <div className="flex flex-wrap justify-center gap-10 mt-10">
-              {count && count.map((item, index) => (
+              {count.map((item, index) => (
                 <CountItem key={index} end={item.count} label={item.type} />
               ))}
             </div>

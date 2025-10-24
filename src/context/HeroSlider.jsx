@@ -12,7 +12,7 @@ export const HotelProvider = ({ children }) => {
   const fetchAdditionalData = async () => {
     setLoading(true);
     try {
-      const res = await axios
+      const res = await
       api.get(`hotel/hotel-slider/`);
       setAdditionalData(res.data);
     } catch (err) {

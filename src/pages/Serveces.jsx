@@ -14,7 +14,7 @@ function Serveces() {
 
   const { additionalData, loading, error } = useHotelContext();
   const servicesData =
-    additionalData.find((item) => item.page === "services")?.additional || [];
+    additionalData?.find((item) => item.page === "services")?.additional || [];
 
   return (
     <section>

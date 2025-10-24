@@ -39,9 +39,9 @@ function Header() {
         <a href="/serveces" className="hover:text-accent transition">
           {t("nav_services")}
         </a>
-        <a href="/spa" className="hover:text-accent transition">
+        {/* <a href="/spa" className="hover:text-accent transition">
           {t("nav_spa")}
-        </a>
+        </a> */}
         <a href="/contact" className="hover:text-accent transition">
           {t("nav_contact")}
         </a>

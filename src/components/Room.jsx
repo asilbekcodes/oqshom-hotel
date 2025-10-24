@@ -15,7 +15,12 @@ function Room({ room }) {
     // kids
   } = room;
 
-  const { t } = useTranslation();
+  const { t,i18n  } = useTranslation();
+   const currentLang = i18n.language; // hozirgi tilni olish (masalan: 'uz' yoki 'en')
+
+  // Tilga qarab valyuta belgisi
+  const currencySymbol = currentLang === "uz" ? "so'm" : "";
+  const formattedPrice = `${price} ${currencySymbol}`;
   return (
     <div className="bg-white shadow-2xl min-h-[500px] group">
       <div className="overflow-hidden">
@@ -52,14 +57,14 @@ function Room({ room }) {
           <h3 className="h3">{title}</h3>
         </Link>
         <p className="max-w-[300px] mx-auto mb-3 lg:mb-6">
-          {description.slice(0, 56)}
+          {description?.slice(0, 56)}
         </p>
       </div>
       <Link
         to={`/room/${id}`}
-        className="btn btn-secondary btn-sm max-w-[280px] mx-auto"
+        className="btn btn-secondary btn-sm max-w-[290px] mx-auto"
       >
-        {t("book_now", { price })}
+        {t("book_now", { price: formattedPrice })}
       </Link>
     </div>
   );
