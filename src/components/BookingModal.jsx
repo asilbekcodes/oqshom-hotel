@@ -124,7 +124,7 @@ const BookingModal = ({ isOpen, closeModal }) => {
 
       {/* Guests Modal */}
       {openModal && (
-        <div className="fixed inset-0 top-[190px] left-[80%] z-50">
+        <div className="fixed inset-0 top-[190px] left-[10%] md:left-[80%] z-50">
           <div className="bg-white p-6 w-[300px] rounded">
             <h2 className="text-lg font-semibold">{t("numberOfGuests")}</h2>
             <hr className="my-2" />
