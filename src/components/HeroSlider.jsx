@@ -71,7 +71,7 @@ function HeroSlider() {
 
             <div className="absolute top-0 w-full h-full">
               <img
-                className="w-full h-full object-cover"
+                className="w-full h-full object-bottom object-cover"
                 src={image}
                 alt={title}
               />

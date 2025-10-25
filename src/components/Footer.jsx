@@ -6,6 +6,7 @@ import {
   FaInstagram,
   FaFacebook,
   FaYoutube,
+  FaLinkedinIn,
 } from "react-icons/fa";
 import { FaArrowUp } from "react-icons/fa6";
 import axios from "axios";
@@ -20,6 +21,7 @@ const iconMap = {
   vk: FaVk,
   odnoklassniki: FaOdnoklassniki,
   youtube: FaYoutube,
+  linkedin: FaLinkedinIn
 };
 
 function Footer() {

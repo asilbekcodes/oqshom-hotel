@@ -19,7 +19,7 @@ function HeroServeces(data) {
 
         <div className="absolute top-0 w-full h-full">
           <img
-            className="w-full h-full object-cover"
+            className="w-full h-full object-center object-cover"
             src={data.data.image}
             alt="serveces"
           />

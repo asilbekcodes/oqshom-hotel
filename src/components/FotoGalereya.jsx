@@ -14,7 +14,7 @@ import img6 from "../assets/img/heroSlider/rooms.jpg";
 import img7 from "../assets/img/rooms/7-lg.png";
 
 import axios from "axios";
-import { api, } from "../api/BaseUrl"; // baseUrl = "http://your-api.com/api/" kabi bo‘lishi kerak
+import { api } from "../api/BaseUrl"; // baseUrl = "http://your-api.com/api/" kabi bo‘lishi kerak
 import { useTranslation } from "react-i18next";
 
 function FotoGalereya() {
@@ -28,8 +28,7 @@ function FotoGalereya() {
 
   const fetchGallery = async () => {
     try {
-      const res = await axios
-      api.get(`hotel/hotel-gallery/`);
+      const res = await api.get(`hotel/hotel-gallery/`);
       setGalleryImages(res.data); // serverdan rasm list keladi
     } catch (err) {
       console.log("Rasm yuklanmadi:", err);
@@ -164,7 +163,7 @@ function FotoGalereya() {
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className="absolute -top-10 -right-10 bg-white/20 hover:bg-white/30 w-10 h-10 rounded-full flex items-center justify-center text-white"
+              className="absolute top-48 md:-top-10 -right-4 md:-right-10 bg-white/20 hover:bg-white/30 w-10 h-10 rounded-full flex items-center justify-center text-white"
               onClick={closeModal}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -184,8 +183,11 @@ function FotoGalereya() {
             />
 
             <button
-              className="absolute left-[-80px] top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 w-12 h-12 rounded-full flex items-center justify-center text-white"
-              onClick={() => navigateImage("prev")}
+              onClick={(e) => {
+                e.stopPropagation();
+                navigateImage("prev");
+              }}
+              className="absolute left-2 sm:left-[-80px] top-1/2 transform -translate-y-1/2 bg-black/80 md:bg-white/30 md:hover:bg-white/40 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path
@@ -197,8 +199,11 @@ function FotoGalereya() {
             </button>
 
             <button
-              className="absolute right-[-80px] top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 w-12 h-12 rounded-full flex items-center justify-center text-white"
-              onClick={() => navigateImage("next")}
+              onClick={(e) => {
+                e.stopPropagation();
+                navigateImage("next");
+              }}
+              className="absolute right-2 sm:right-[-80px] top-1/2 transform -translate-y-1/2 bg-black/80 md:bg-white/30 md:hover:bg-white/40 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="m9 18 6-6-6-6" stroke="currentColor" strokeWidth="2" />
