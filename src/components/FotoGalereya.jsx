@@ -13,7 +13,6 @@ import img5 from "../assets/img/serveces/restaurant2.jpg";
 import img6 from "../assets/img/heroSlider/rooms.jpg";
 import img7 from "../assets/img/rooms/7-lg.png";
 
-import axios from "axios";
 import { api } from "../api/BaseUrl"; // baseUrl = "http://your-api.com/api/" kabi bo‘lishi kerak
 import { useTranslation } from "react-i18next";
 
@@ -29,7 +28,7 @@ function FotoGalereya() {
   const fetchGallery = async () => {
     try {
       const res = await api.get(`hotel/hotel-gallery/`);
-      setGalleryImages(res.data); // serverdan rasm list keladi
+      a(res.data); // serverdan rasm list keladi
     } catch (err) {
       console.log("Rasm yuklanmadi:", err);
     }

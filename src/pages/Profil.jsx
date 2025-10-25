@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../api/BaseUrl";
-import axios from "axios";
 import img from "../assets/img/rooms/7-lg.png";
 
 function Profil() {
@@ -16,14 +15,12 @@ function Profil() {
   };
 
   const profileData = () => {
-    axios
       api.get(`users/`)
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   };
 
   const orderData = () => {
-    axios
       api.get(`rooms/booking/`)
       .then((res) => setOrder(res.data))
       .catch((err) => console.log(err));

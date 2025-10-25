@@ -9,7 +9,6 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import { FaArrowUp } from "react-icons/fa6";
-import axios from "axios";
 import { api } from "../api/BaseUrl";
 import oqshom_logo from "../assets/img/oqshom_logo.png";
 import { useTranslation } from "react-i18next";
@@ -49,8 +48,7 @@ function Footer() {
 
   const [links, setLinks] = useState([]);
 
-  useEffect(() => {
-    axios
+  useEffect(() => {    
       api.get(`hotel/social-media/`) // API manzilini o'zingizga moslashtiring
       .then((res) => {
         setLinks(res.data);

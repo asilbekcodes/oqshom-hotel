@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
 import { api } from "../api/BaseUrl";
 // import resent from "../../assets/icons/Ellipse 286.svg";
 import "react-phone-input-2/lib/style.css";
@@ -21,6 +20,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
   const [firstName, setFirstName] = useState("");
   const [phone_number, setPhone_number] = useState("");
   const [citizenship, setCitizenship] = useState("");
+  const [userId, setUserId] = useState("");
 
   // useEffect(() => {
   //   if (isCodeModalOpen && timer > 0) {
@@ -39,7 +39,6 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
 
   const handleConfirmPhone = (e) => {
     e.preventDefault();
-    axios
       api.post(`users/signup/`, {
         email,
         password,
@@ -50,8 +49,9 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
         citizenship,
       })
       .then((res) => {
-        localStorage.setItem("accessToken", res.data.access);
-        localStorage.setItem("refreshToken", res.data.refresh);
+        console.log(res.data.user_id);
+        
+        setUserId(res.data.user_id);
         setIsRegisterModal(false);
         setIsCodeModalOpen(true);
         toast.success("Succes register");
@@ -76,9 +76,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
   const handleConfirmCode = () => {
     const code = verificationCode.join("");
     if (code.length !== 6) return;
-    const token = localStorage.getItem("accessToken");
-    axios
-      api.post(`users/verify/`, { code }, { headers: { Authorization: `Bearer ${token}` } })
+      api.post(`users/verify/`, { user_id: userId, code })
       .then((res) => {
         localStorage.setItem("userToken", res.data.access);
         localStorage.setItem("refreshToken", res.data.refresh);
@@ -110,7 +108,6 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    axios
       api.post(`users/signin/`, {
         email,
         password,

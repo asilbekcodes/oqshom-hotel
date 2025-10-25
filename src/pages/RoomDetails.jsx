@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
 import ScrollToTop from "../components/ScrollToTop";
-import axios from "axios";
 import { api } from "../api/BaseUrl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";

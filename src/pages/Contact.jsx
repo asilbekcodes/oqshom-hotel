@@ -5,7 +5,6 @@ import ReCAPTCHA from "react-google-recaptcha";
 import PhoneInput from "react-phone-number-input/input";
 import Animation from "../components/Animation";
 import MapView from "../components/map";
-import axios from "axios";
 import { api } from "../api/BaseUrl";
 
 function Contact() {
@@ -20,7 +19,6 @@ function Contact() {
   // const [captchaValue, setCaptchaValue] = useState(null);
 
   const getSelect = () => {
-    axios
       api.get(`hotel/reason/`)
       .then((res) => setReasons(res.data))
       .catch((err) => console.log(err));
@@ -40,7 +38,6 @@ function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios
       api.post(`hotel/contact/`, {
         reason,
         first_name: firstName,

@@ -6,7 +6,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
 import { useHotelContext } from "../context/HeroSlider";
-import axios from "axios";
 import { api } from "../api/BaseUrl";
 
 function Spa() {
@@ -23,7 +22,7 @@ function Spa() {
 
   const fetchSpa = async () => {
     try {
-      const res = await axios 
+      const res = await
       api.get(`hotel/spa/`);
       setDataSpa(res.data);
     } catch (err) {
