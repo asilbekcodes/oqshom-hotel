@@ -28,7 +28,7 @@ function FotoGalereya() {
   const fetchGallery = async () => {
     try {
       const res = await api.get(`hotel/hotel-gallery/`);
-      a(res.data); // serverdan rasm list keladi
+      setGalleryImages(res.data); // serverdan rasm list keladi
     } catch (err) {
       console.log("Rasm yuklanmadi:", err);
     }
