@@ -8,7 +8,7 @@
   "guests": "النزلاء",
   "findRooms": "ابحث عن الغرف",
   "numberOfGuests": "عدد النزلاء",
-  "adults": "البالغون",
+  "adults": "شخص",
   "ready": "جاهز",
   "monthNames": [
     "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو",
@@ -62,5 +62,11 @@
   "qarshi_koprigi": "جسر قرشي",
   "kok_gumbaz": "مسجد كوك غمبز",
   "qarshi_teatr": "المسرح الوطني في قرشي",
-  "qarshi_bogi": "الحديقة المركزية في قرشي"
+  "qarshi_bogi": "الحديقة المركزية في قرشي",
+  "your_reservation": "حجزك",
+  "check_in": "تاريخ الدخول",
+  "check_out": "تاريخ الخروج",
+  "no_adults": "لا يوجد بالغون",
+  "room_facilities": "مرافق الغرفة",
+  "hotel_rules": "قواعد الفندق"
 }

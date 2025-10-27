@@ -107,8 +107,8 @@ function RoomDetails() {
     <section>
       <ScrollToTop />
       <div
-        className="bg-cover bg-center h-[560px] relative flex justify-center items-center"
-        style={{ backgroundImage: `url(${main_image})` }}
+        className="bg-cover h-[80vh] relative flex justify-center items-center"
+        style={{ backgroundImage: `url(${main_image})`, backgroundPosition: "center 70%", }}
       >
         <div className="absolute top-0 w-full h-full bg-black/70"></div>
         <h1 className="text-6xl text-white z-20 font-primary text-center">
@@ -116,8 +116,8 @@ function RoomDetails() {
         </h1>
       </div>
       <div className="container mx-auto">
-        <div className="flex flex-col lg:flex-row h-full py-24">
-          <div className="flex-1 h-full lg:w-[60%] px-6">
+        <div className="flex flex-col lg:flex-row h-full pt-5 pb-24 md:py-24">
+          <div className="flex-1 h-full lg:w-[60%] md:px-6">
             <h2 className="h2">{title}</h2>
             <p className="mb-8">{description}</p>
             <Swiper
@@ -134,12 +134,9 @@ function RoomDetails() {
               ))}
             </Swiper>
             <div>
-              <h3 className="h3 mb-3">Room Facilities</h3>
+              <h3 className="h3 mb-3">{t("room_facilities")}</h3>
               <p className="mb-12">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Praesentium rerum voluptatibus error fuga ratione laboriosam
-                consequuntur. Atque vel possimus mollitia veniam, ex corporis
-                quaerat in.
+                {facilities && facilities[0]?.description}
               </p>
               <div className="grid grid-cols-3 gap-6 mb-12">
                 {facilities &&
@@ -159,7 +156,7 @@ function RoomDetails() {
           <div className="flex-1 h-full lg:w-[60%] ">
             <div className="py-8 px-6 bg-accent/20 mb-12">
               <div className="flex flex-col space-y-4 mb-4">
-                <h3 className="h3">Your Reservation</h3>
+                <h3 className="h3">{t("your_reservation")}</h3>
                 <div className="h-[60px]">
                   <div className="relative flex items-center justify-end h-full w-full">
                     <div className="absolute z-10 pr-8 ">
@@ -171,7 +168,7 @@ function RoomDetails() {
                       className="w-full h-full"
                       selected={startDate}
                       onChange={(date) => setStartDate(date)}
-                      placeholderText="Check In"
+                      placeholderText={t("check_in")}
                       excludeDates={excludeDates}
                       minDate={new Date()}
                     />
@@ -188,7 +185,7 @@ function RoomDetails() {
                       className="w-full h-full"
                       selected={endDate}
                       onChange={(date) => setEndDate(date)}
-                      placeholderText="Check Out"
+                      placeholderText={t("check_out")}
                       excludeDates={excludeDates}
                       minDate={startDate || new Date()}
                     />
@@ -201,7 +198,7 @@ function RoomDetails() {
                         "w-full h-full flex items-center justify-between px-8"
                       }
                     >
-                      {adults === "0 Adults" ? "No Adults" : adults + " Adults"}
+                      {adults === "0 Adults" ? "No Adults" : adults + ` ${t("adults")}`}
                       <BsChevronDown className="text-base text-accent-hover" />
                     </Menu.Button>
                   </Menu>
@@ -228,7 +225,7 @@ function RoomDetails() {
               </button>
             </div>
             <div>
-              <h3 className="h3 mb-3">Hotel Rules</h3>
+              <h3 className="h3 mb-3">{t("hotel_rules")}</h3>
               <p className="mb-6">
                 {(rules && rules[0]?.description) ||
                   "Hotel rules are listed below:"}

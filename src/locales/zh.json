@@ -8,7 +8,7 @@
   "guests": "宾客",
   "findRooms": "查找房间",
   "numberOfGuests": "宾客人数",
-  "adults": "成人",
+  "adults": "人",
   "ready": "准备好",
   "monthNames": [
     "一月", "二月", "三月", "四月", "五月", "六月",
@@ -62,5 +62,11 @@
   "qarshi_koprigi": "卡尔希桥",
   "kok_gumbaz": "蓝圆顶清真寺",
   "qarshi_teatr": "卡尔希国家剧院",
-  "qarshi_bogi": "卡尔希中央公园"
+  "qarshi_bogi": "卡尔希中央公园",
+  "your_reservation": "您的预订",
+  "check_in": "入住日期",
+  "check_out": "退房日期",
+  "no_adults": "无成人",
+  "room_facilities": "房间设施",
+  "hotel_rules": "酒店规定"
 }

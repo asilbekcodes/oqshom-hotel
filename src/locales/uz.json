@@ -8,7 +8,7 @@
   "guests": "Mehmonlar",
   "findRooms": "Xonalarni topish",
   "numberOfGuests": "Mehmonlar soni",
-  "adults": "Kattalar",
+  "adults": "Odam",
   "ready": "Tayyor",
   "monthNames": [
     "yanvar", "fevral", "mart", "aprel", "may", "iyun",
@@ -62,5 +62,11 @@
   "qarshi_koprigi": "Qarshi Ko‘prigi",
   "kok_gumbaz": "Ko‘k Gumbaz masjidi",
   "qarshi_teatr": "Qarshi Milliy Teatr",
-  "qarshi_bogi": "Qarshi Markaziy bog‘i"
+  "qarshi_bogi": "Qarshi Markaziy bog‘i",
+  "your_reservation": "Sizning broningiz",
+  "check_in": "Kirish sanasi",
+  "check_out": "Chiqish sanasi",
+  "no_adults": "Kattalar yo‘q",
+  "room_facilities": "Xona qulayliklari",
+  "hotel_rules": "Mehmonxona qoidalari"
 }

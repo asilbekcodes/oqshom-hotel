@@ -8,7 +8,7 @@
   "guests": "Guests",
   "findRooms": "Find rooms",
   "numberOfGuests": "Number of guests",
-  "adults": "Adults",
+  "adults": "Person",
   "ready": "Ready",
   "monthNames": [
     "January", "February", "March", "April", "May", "June",
@@ -62,5 +62,11 @@
   "qarshi_koprigi": "Karshi Bridge",
   "kok_gumbaz": "Kok Gumbaz Mosque",
   "qarshi_teatr": "Karshi National Theatre",
-  "qarshi_bogi": "Karshi Central Park"
+  "qarshi_bogi": "Karshi Central Park",
+  "your_reservation": "Your Reservation",
+  "check_in": "Check In",
+  "check_out": "Check Out",
+  "no_adults": "No Adults",
+  "room_facilities": "Room Facilities",
+  "hotel_rules": "Hotel Rules"
 }
