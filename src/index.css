@@ -9,10 +9,8 @@
   font-style: normal;
 }
 
-.swiper-button-next {
-  display: none !important;
-}
-
+/* Hide swiper arrows */
+.swiper-button-next,
 .swiper-button-prev {
   display: none !important;
 }
@@ -24,28 +22,41 @@
   input::placeholder {
     @apply text-primary;
   }
+
+  /* Headings */
   .h2 {
-    @apply font-primary text-[45px] mb-4;
+    @apply font-primary text-[45px] mb-4 text-primary;
   }
   .h3 {
-    @apply text-2xl font-primary font-semibold tracking-[1px] mb-2;
+    @apply text-2xl font-primary font-semibold tracking-[1px] mb-2 text-primary;
   }
+
+  /* Buttons */
   .btn {
     @apply text-[15px] tracking-[3px] font-tertiary uppercase text-white flex-1 transition-all px-7 flex justify-center items-center;
   }
+
   .btn-sm {
     @apply h-[48px];
   }
   .btn-lg {
     @apply h-[60px];
   }
+
+  /* Brand button styles */
   .btn-primary {
-    @apply bg-accent hover:bg-accent-hover;
+    @apply bg-tertiary hover:bg-secondary hover:text-primary;
   }
+
   .btn-secondary {
-    @apply bg-primary hover:bg-accent;
+    @apply bg-tertiary text-primary hover:bg-secondary hover:text-primary;
   }
+
+  .btn-accent {
+    @apply bg-accent hover:opacity-90;
+  }
+
   .btn-white {
-    @apply bg-white text-[#0a0a0a];
+    @apply bg-white text-primary border border-secondary hover:bg-secondary hover:text-primary;
   }
 }

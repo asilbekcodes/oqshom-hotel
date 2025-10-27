@@ -24,11 +24,18 @@ export default {
     },
     extend: {
       colors: {
-        primary: "#0a0a0a",
+        /* --- BRANd RANGLAR --- */
+        primary: "#0a0a0a",      // yashil/moviy (body, text asosiy)
+        secondary: "#ACCCCB",
+        tertiary: "#5A9A97",    // och yashil/moviy pastel (soft elementlar)
         accent: {
-          DEFAULT: "#a37d4c",
-          hover: "#967142",
+          DEFAULT: "#452B87",    // to'q binafsha (cta)
+          hover: "#3a226d",      // accent hover (bir oz qoraytirilgan)
         },
+
+        /* agar kerak bo'lsa, eski ranglarni ham qoldirish mumkin:
+        oldPrimary: "#0a0a0a",
+        */
       },
       backgroundImage: {
         room: "url('./assets/img/room.jpg')",

@@ -48,7 +48,7 @@ function Header() {
         <div className="hover:text-accent transition">
           <LanguageSelector /> 
         </div>
-        {/* {token ? (
+        {token ? (
           <a href="/profil" className="hover:text-accent transition">
             Profil
           </a>
@@ -59,7 +59,7 @@ function Header() {
           >
             Login
           </a>
-        )} */}
+        )}
       </>
     );
   };

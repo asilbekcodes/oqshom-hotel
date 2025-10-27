@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { api } from "../api/BaseUrl";
-// import resent from "../../assets/icons/Ellipse 286.svg";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import Input from "./Input";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
+  const { t } = useTranslation();
   const [verificationCode, setVerificationCode] = useState(["", "", "", "", "", ""]);
   const [isCodeModalOpen, setIsCodeModalOpen] = useState(false);
   const inputRefs = useRef([]);
@@ -22,24 +23,10 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
   const [citizenship, setCitizenship] = useState("");
   const [userId, setUserId] = useState("");
 
-  // useEffect(() => {
-  //   if (isCodeModalOpen && timer > 0) {
-  //     const interval = setInterval(() => {
-  //       setTimer((prev) => prev - 1);
-  //     }, 1000);
-  //     return () => clearInterval(interval);
-  //   }
-  // }, [isCodeModalOpen, timer]);
-
-  // useEffect(() => {
-  //   if (verificationCode.every((d) => d !== "") && isCodeModalOpen) {
-  //     handleConfirmCode();
-  //   }
-  // }, [verificationCode]);  
-
   const handleConfirmPhone = (e) => {
     e.preventDefault();
-      api.post(`users/signup/`, {
+    api
+      .post(`users/signup/`, {
         email,
         password,
         confirm_password: confirmPassword,
@@ -49,15 +36,13 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
         citizenship,
       })
       .then((res) => {
-        console.log(res.data.user_id);
-        
         setUserId(res.data.user_id);
         setIsRegisterModal(false);
         setIsCodeModalOpen(true);
-        toast.success("Succes register");
+        toast.success(t("success_register"));
       })
-      .catch((err) => {
-        toast.error("Xatolik yuz berdi!");
+      .catch(() => {
+        toast.error(t("error_occurred"));
       });
   };
 
@@ -76,56 +61,42 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
   const handleConfirmCode = () => {
     const code = verificationCode.join("");
     if (code.length !== 6) return;
-      api.post(`users/verify/`, { user_id: userId, code })
+    api
+      .post(`users/verify/`, { user_id: userId, code })
       .then((res) => {
         localStorage.setItem("userToken", res.data.access);
         localStorage.setItem("refreshToken", res.data.refresh);
         setIsCodeModalOpen(false);
-        toast.success("Succesfully logged in!");
+        toast.success(t("success_login"));
       })
-      .catch((err) => {
+      .catch(() => {
         setVerificationCode(["", "", "", "", "", ""]);
         inputRefs.current[0].focus();
-        toast.error("Code xato!");
+        toast.error(t("code_incorrect"));
       });
   };
 
-  // const resentSms = () => {
-  //   if (timer > 0) {
-  //     toast.warning(`Iltimos, ${timer} soniya kuting`);
-  //     return;
-  //   }
-
-  //   axios
-  //     .post(`${baseUrl}user/resend-sms/`, { phone_number: phoneNumber })
-  //     .then(() => {
-  //       toast.success("Kod qayta yuborildi!");
-  //     })
-  //     .catch((err) => {
-  //       toast.error(err.response?.data?.message || "Xatolik yuz berdi!");
-  //     });
-  // };
-
   const handleLogin = (e) => {
     e.preventDefault();
-      api.post(`users/signin/`, {
+    api
+      .post(`users/signin/`, {
         email,
         password,
       })
       .then((res) => {
         localStorage.setItem("userToken", res.data.tokens.access);
         localStorage.setItem("refreshToken", res.data.tokens.refresh);
-        setIsLogin(false);    
-        toast.success("Succes login");    
+        setIsLogin(false);
+        toast.success(t("success_login"));
       })
-      .catch((err) => {
-        toast.error("Xatolik yuz berdi!");        
+      .catch(() => {
+        toast.error(t("error_occurred"));
       });
   };
 
   return (
     <>
-      {/* Telefon raqam modal */}
+      {/* Ro‘yxatdan o‘tish modal */}
       {isRegisterModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white rounded-xl w-[90%] max-w-[800px] p-6 relative font-sans">
@@ -135,47 +106,47 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
             >
               &times;
             </button>
-            <h2 className="text-2xl font-semibold mb-2">Sign in</h2>
+            <h2 className="text-2xl font-semibold mb-2">{t("sign_up")}</h2>
             <form onSubmit={handleConfirmPhone}>
               <div className="grid md:grid-cols-2 gap-4">
                 <Input
                   type="text"
-                  label="lastName"
+                  label={t("last_name")}
                   name="lastName"
-                  placeholder="Enter your last name"
+                  placeholder={t("last_name")}
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                   required
                 />
                 <Input
                   type="text"
-                  label="firstName"
+                  label={t("first_name")}
                   name="firstName"
-                  placeholder="Enter your first name"
+                  placeholder={t("first_name")}
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   required
                 />
                 <Input
                   type="email"
-                  label="Email"
+                  label={t("email")}
                   name="email"
-                  placeholder="Enter your email"
+                  placeholder={t("email")}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
                 <div>
                   <label className="text-lg font-medium" htmlFor="phone">
-                    Phone Number <span className="text-red-500">*</span>
+                    {t("phone_number")} <span className="text-red-500">*</span>
                   </label>
                   <PhoneInput
                     country={"uz"}
-                    placeholder="Enter your phone number"
+                    placeholder={t("phone_number")}
                     value={phone_number}
                     onChange={(value, country) => {
-                      setPhone_number( "+" + value);
-                      setCitizenship(country.countryCode.toUpperCase()); // 'uz' -> 'UZ'
+                      setPhone_number("+" + value);
+                      setCitizenship(country.countryCode.toUpperCase());
                     }}
                     required
                     buttonClass="!bg-white mt-1 !rounded-l-md"
@@ -183,7 +154,6 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
                     inputProps={{
                       name: "phone",
                       required: true,
-                      autoFocus: true,
                       className:
                         "w-full pl-12 pr-4 py-3 outline-none rounded-md border mt-1",
                     }}
@@ -191,18 +161,18 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
                 </div>
                 <Input
                   type="password"
-                  label="Password"
+                  label={t("password")}
                   name="password"
-                  placeholder="Enter your password"
+                  placeholder={t("password")}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
                 <Input
                   type="password"
-                  label="Confirm Password"
+                  label={t("confirm_password")}
                   name="confirmPassword"
-                  placeholder="Confirm your password"
+                  placeholder={t("confirm_password")}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
@@ -212,7 +182,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
                 className="btn btn-primary btn-sm w-full cursor-pointer my-5"
                 type="submit"
               >
-                {isLoading ? "Loading..." : "Sign up"}
+                {isLoading ? "Loading..." : t("sign_up")}
               </button>
             </form>
 
@@ -223,7 +193,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
               }}
               className="text-lg text-center text-blue-500 cursor-pointer"
             >
-              Sign In
+              {t("have_account")} {t("login_here")}
             </p>
           </div>
         </div>
@@ -239,11 +209,9 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
             >
               &times;
             </button>
-            <h2 className="text-2xl font-semibold mb-2">Enter the code</h2>
+            <h2 className="text-2xl font-semibold mb-2">{t("enter_code")}</h2>
             <p className="text-lg text-[#292929] mb-8">
-              A 4-digit code has been sent to your email address{" "}
-              <span className="font-semibold">{email}</span> to verify your
-              email.
+              {t("code_sent")} <span className="font-semibold">{email}</span>.
             </p>
 
             <div className="flex justify-center gap-3 my-16">
@@ -260,29 +228,14 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
               ))}
             </div>
 
-            {/* <p className="text-gray-600 text-center">
-              {timer > 0 ? (
-                <>
-                  Kod ololmadizmi? {timer} soniyadan so‘ng qayta yuborish
-                  mumkin.
-                </>
-              ) : (
-                <span
-                  onClick={resentSms}
-                  className="cursor-pointer flex items-center justify-center gap-2 text-[#292929] font-medium hover:underline"
-                >
-                  <img src='' alt="resent" className="w-5 h-5" />
-                  Kodni qayta yuborish
-                </span>
-              )}
-            </p> */}
             <button onClick={handleConfirmCode} className="btn btn-lg btn-primary w-full">
-              confirmation
+              {t("confirmation")}
             </button>
           </div>
         </div>
       )}
 
+      {/* Login Modal */}
       {isLoginModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white rounded-xl w-[90%] max-w-[450px] p-6 relative font-sans">
@@ -292,36 +245,35 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
             >
               &times;
             </button>
-            <h2 className="text-2xl font-semibold mb-2">Sign In</h2>
+            <h2 className="text-2xl font-semibold mb-2">{t("sign_in")}</h2>
             <form onSubmit={handleLogin}>
               <Input
                 type="email"
-                label="Email"
+                label={t("email")}
                 name="email"
-                placeholder="Enter your email"
+                placeholder={t("email")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
               <Input
                 type="password"
-                label="Password"
+                label={t("password")}
                 name="password"
-                placeholder="Enter your password"
+                placeholder={t("password")}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
               <button
                 type="submit"
-                className="btn btn-primary btn-sm w-full transition  my-5"
+                className="btn btn-primary btn-sm w-full transition my-5"
               >
-                Sign In
+                {t("sign_in")}
               </button>
             </form>
-            {/* <Login /> */}
             <p className="text-center">
-              Don't have an account?{" "}
+              {t("dont_have_account")}{" "}
               <span
                 onClick={() => {
                   onClose();
@@ -329,7 +281,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
                 }}
                 className="text-blue-500 cursor-pointer"
               >
-                Sign up.
+                {t("register_here")}
               </span>
             </p>
           </div>
