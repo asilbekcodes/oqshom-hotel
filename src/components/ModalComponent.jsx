@@ -10,7 +10,7 @@ import VerificationInput from "react-verification-input";
 function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
   const { t } = useTranslation();
   const [verificationCode, setVerificationCode] = useState("");
-  const [isCodeModalOpen, setIsCodeModalOpen] = useState(true);
+  const [isCodeModalOpen, setIsCodeModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isRegisterModal, setIsRegisterModal] = useState(false);
 
