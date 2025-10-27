@@ -44,7 +44,7 @@ function App() {
       {/* Bron qilish tugmasi */}
       <button
         onClick={openModal}
-        className={`fixed z-40 bg-accent py-2 px-4 tracking-[3px] font-tertiary uppercase text-white -right-2 top-52 lg:px-8 lg:py-4 ${
+        className={`fixed z-40 bg-tertiary py-2 px-4 tracking-[3px] font-tertiary uppercase text-white -right-2 top-52 lg:px-8 lg:py-4 ${
           isModalOpen ? "hidden" : ""
         }`}
       >
