@@ -25,9 +25,9 @@ export default {
     extend: {
       colors: {
         /* --- BRANd RANGLAR --- */
-        primary: "#0a0a0a",      // yashil/moviy (body, text asosiy)
-        secondary: "#ACCCCB",
-        tertiary: "#5A9A97",    // och yashil/moviy pastel (soft elementlar)
+        primary: "#0a0a0a",      
+        secondary: "#ACCCCB",  // och yashil/moviy pastel (soft elementlar)
+        tertiary: "#5A9A97",   // yashil/moviy (body, text asosiy) 
         accent: {
           DEFAULT: "#452B87",    // to'q binafsha (cta)
           hover: "#3a226d",      // accent hover (bir oz qoraytirilgan)

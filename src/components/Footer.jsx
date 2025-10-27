@@ -90,7 +90,7 @@ function Footer() {
         <div className="text-center md:text-right">
           <a
             href="mailto:oqshomplaza@mail.ru"
-            className="text-[#e3af5e] font-semibold hover:underline"
+            className="text-[#5A9A97] font-semibold hover:underline"
           >
             oqshomplaza@mail.ru
           </a>
