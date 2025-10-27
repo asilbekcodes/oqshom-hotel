@@ -22,7 +22,7 @@ function Header() {
   }, []);
 
   const navLinks = () => {
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("userToken");
     const { t } = useTranslation();
 
     return (

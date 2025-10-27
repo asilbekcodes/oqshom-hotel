@@ -113,7 +113,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
         password,
       })
       .then((res) => {
-        localStorage.setItem("accessToken", res.data.tokens.access);
+        localStorage.setItem("userToken", res.data.tokens.access);
         localStorage.setItem("refreshToken", res.data.tokens.refresh);
         setIsLogin(false);    
         toast.success("Succes login");    

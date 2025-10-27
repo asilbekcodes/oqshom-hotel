@@ -63,7 +63,7 @@ function RoomDetails() {
   const [endDate, setEndDate] = useState(false);
 
   const roomBron = () => {
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("userToken");
     api
       .post(
         `rooms/booking/`,
@@ -88,7 +88,7 @@ function RoomDetails() {
       });
   };
   const handleBron = () => {
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("userToken");
     if (!token) {
       setIsLogin(true);
     } else if (startDate && endDate && token) {
