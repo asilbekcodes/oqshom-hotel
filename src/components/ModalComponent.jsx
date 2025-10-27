@@ -1,16 +1,16 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { api } from "../api/BaseUrl";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import Input from "./Input";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import VerificationInput from "react-verification-input";
 
 function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
   const { t } = useTranslation();
-  const [verificationCode, setVerificationCode] = useState(["", "", "", "", "", ""]);
-  const [isCodeModalOpen, setIsCodeModalOpen] = useState(false);
-  const inputRefs = useRef([]);
+  const [verificationCode, setVerificationCode] = useState("");
+  const [isCodeModalOpen, setIsCodeModalOpen] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isRegisterModal, setIsRegisterModal] = useState(false);
 
@@ -25,6 +25,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
 
   const handleConfirmPhone = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     api
       .post(`users/signup/`, {
         email,
@@ -43,26 +44,17 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
       })
       .catch(() => {
         toast.error(t("error_occurred"));
-      });
-  };
-
-  const handleCodeChange = (e, index) => {
-    const value = e.target.value;
-    if (/^\d*$/.test(value) && value.length <= 1) {
-      const newCode = [...verificationCode];
-      newCode[index] = value;
-      setVerificationCode(newCode);
-      if (value && index < 5) {
-        inputRefs.current[index + 1].focus();
-      }
-    }
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const handleConfirmCode = () => {
-    const code = verificationCode.join("");
-    if (code.length !== 6) return;
+    if (verificationCode.length !== 6) {
+      toast.error(t("code_incorrect"));
+      return;
+    }
     api
-      .post(`users/verify/`, { user_id: userId, code })
+      .post(`users/verify/`, { user_id: userId, code: verificationCode })
       .then((res) => {
         localStorage.setItem("userToken", res.data.access);
         localStorage.setItem("refreshToken", res.data.refresh);
@@ -70,8 +62,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
         toast.success(t("success_login"));
       })
       .catch(() => {
-        setVerificationCode(["", "", "", "", "", ""]);
-        inputRefs.current[0].focus();
+        setVerificationCode("");
         toast.error(t("code_incorrect"));
       });
   };
@@ -214,21 +205,26 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
               {t("code_sent")} <span className="font-semibold">{email}</span>.
             </p>
 
-            <div className="flex justify-center gap-3 my-16">
-              {verificationCode.map((digit, index) => (
-                <input
-                  key={index}
-                  type="text"
-                  value={digit}
-                  onChange={(e) => handleCodeChange(e, index)}
-                  maxLength={1}
-                  ref={(el) => (inputRefs.current[index] = el)}
-                  className="w-12 h-12 border border-black rounded-md text-center text-lg"
-                />
-              ))}
+            <div className="my-12 flex justify-center">
+              <VerificationInput
+                value={verificationCode}
+                onChange={setVerificationCode}
+                length={6}
+                validChars="0-9"
+                placeholder=""
+                classNames={{
+                  container: "flex justify-center items-center gap-3",
+                  character: "w-12 h-12 border border-black rounded-md text-center",
+                  characterInactive: "text-gray-400",
+                  characterSelected: "border-blue-500",
+                }}
+              />
             </div>
 
-            <button onClick={handleConfirmCode} className="btn btn-lg btn-primary w-full">
+            <button
+              onClick={handleConfirmCode}
+              className="btn btn-lg btn-primary w-full"
+            >
               {t("confirmation")}
             </button>
           </div>

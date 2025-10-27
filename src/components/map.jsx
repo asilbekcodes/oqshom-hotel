@@ -32,7 +32,7 @@ function MapView() {
   return (
     <MapContainer
       center={[38.841887, 65.794589]}
-      zoom={13}
+      zoom={15}
       style={{ height: "400px", width: "100%", zIndex: 1 }}
     >
       <TileLayer
