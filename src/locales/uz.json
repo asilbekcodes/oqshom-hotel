@@ -94,5 +94,6 @@
   "lastname": "Familiya",
   "firstname": "Ism",
   "phone": "Telefon raqami",
-  "price": "Narxi"
+  "price": "Narxi",
+  "order_rooms": "Buyurtma qilish"
 }

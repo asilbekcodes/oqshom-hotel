@@ -6,6 +6,7 @@ import BookingModal from "./components/BookingModal";
 import { FaRegCalendarCheck } from "react-icons/fa";
 import { ClipLoader } from "react-spinners";
 import Home from "./pages/Home";
+import { useTranslation } from "react-i18next";
 
 // 🔹 Sahifalarni lazy load qilamiz
 // const Home = lazy(() => import("./pages/Home"));
@@ -37,6 +38,8 @@ function App() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  const { t } = useTranslation();
+
   return (
     <div>
       <Header />
@@ -49,7 +52,7 @@ function App() {
         }`}
       >
         <FaRegCalendarCheck className="md:hidden block mr-2" />
-      <span className="hidden md:block">Order rooms</span>
+        <span className="hidden md:block">{t("order_rooms")}</span>
       </button>
 
       {/* 🔹 Suspense bilan yuklanish animatsiyasi */}

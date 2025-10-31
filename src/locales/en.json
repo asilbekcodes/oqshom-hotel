@@ -94,5 +94,6 @@
   "lastname": "Last Name",
   "firstname": "First Name",
   "phone": "Phone Number",
-  "price": "Price"
+  "price": "Price",
+  "order_rooms": "Order rooms"
 }
