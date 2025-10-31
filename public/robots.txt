@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap joyi
-Sitemap: https://oqshomhotel.uz/sitemap.xml
+Sitemap: https://oqshomplaza.uz/sitemap.xml

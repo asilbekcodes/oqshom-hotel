@@ -3,25 +3,25 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
 >
   <url>
-    <loc>https://oqshomhotel.uz/</loc>
+    <loc>https://oqshomplaza.uz/</loc>
     <lastmod>2025-10-31</lastmod>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://oqshomhotel.uz/rooms</loc>
+    <loc>https://oqshomplaza.uz/rooms</loc>
     <lastmod>2025-10-31</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://oqshomhotel.uz/about</loc>
+    <loc>https://oqshomplaza.uzabout</loc>
     <lastmod>2025-10-31</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://oqshomhotel.uz/contact</loc>
+    <loc>https://oqshomplaza.uz/contact</loc>
     <lastmod>2025-10-31</lastmod>
     <priority>0.4</priority>
   </url>
