@@ -3,7 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Oqshom Hotel</title>
+
+    <title>Oqshom Plaza – Qulay va Zamonaviy Mehmonxona</title>
+
+    <!-- 📝 Meta tavsif (Google natijalari uchun) -->
+    <meta
+      name="description"
+      content="Oqshom Hotel – Qarshidagi zamonaviy va qulay mehmonxona. Online bron qilish, arzon narxlar, bepul Wi-Fi, restoran va 24/7 xizmat."
+    />
+
+    <!-- 🔑 Kalit so‘zlar -->
+    <meta
+      name="keywords"
+      content="Oqshom Plaza, Oqshom Hotel, mehmonxona, hotel, Qarshi, arzon mehmonxona, online bron, Uzbekistan hotel"
+    />
+
+    <!-- 👤 Muallif -->
+    <meta name="author" content="Oqshom Plaza Team" />
+
+    <!-- 🌐 Canonical URL (dublikat sahifalar uchun) -->
+    <link rel="canonical" href="https://oqshomhotel.uz/" />
+
+    <!-- 📱 Ijtimoiy tarmoqlar uchun (Open Graph va Twitter Cards) -->
+    <meta
+      property="og:title"
+      content="Oqshom Plaza – Qulay va Zamonaviy Mehmonxona"
+    />
+    <meta
+      property="og:description"
+      content="Oqshom Plaza – Qarshidagi zamonaviy va qulay mehmonxona. Online bron qilish, arzon narxlar, bepul Wi-Fi, restoran va 24/7 xizmat."
+    />
+    <meta
+      property="og:image"
+      content="https://oqshomhotel.uz/oqshom_logo.png"
+    />
+    <meta property="og:url" content="https://oqshomhotel.uz/" />
+    <meta property="og:type" content="website" />
+    <!-- Asosiy til (o'zbekcha) -->
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Qo‘shimcha tillar -->
+    <meta property="og:locale:alternate" content="ru_RU" />
+    <meta property="og:locale:alternate" content="uz_UZ" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+    <meta property="og:locale:alternate" content="ar_SA" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Oqshom Plaza – Qulay va Zamonaviy Mehmonxona"
+    />
+    <meta
+      name="twitter:description"
+      content="Qarshidagi eng qulay va zamonaviy mehmonxona – Oqshom Hotel. Online bron, bepul Wi-Fi, 24/7 xizmat!"
+    />
+    <meta
+      name="twitter:image"
+      content="https://oqshomhotel.uz/oqshom_logo.png"
+    />
 
     <!-- 🌀 Google Fonts preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,8 +73,6 @@
       media="print"
       onload="this.media='all'"
     />
-
-    <!-- ✅ Fallback agar font kechiksa -->
     <noscript>
       <link
         href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lato&family=Playfair+Display&family=Poppins&display=swap"
@@ -26,14 +81,14 @@
     </noscript>
 
     <!-- 🖼️ Favicon -->
-    <link
-      rel="shortcut icon"
-      href="./src/assets/img/oqshom.png"
-      type="image/x-icon"
-    />
+    <link rel="icon" href="./src/assets/img/oqshom.png" type="image/png" />
 
+    <!-- ⚡ Preconnect to API -->
     <link rel="preconnect" href="https://hotel.pythonanywhere.com" />
-    <link rel="dns-prefetch" href="https://hotel.pythonanywhere.com">
+    <link rel="dns-prefetch" href="https://hotel.pythonanywhere.com" />
+
+    <!-- 📊 SEO indexing uchun -->
+    <meta name="robots" content="index, follow" />
   </head>
 
   <body>
@@ -42,7 +97,7 @@
     <!-- ⚙️ Asosiy React skript -->
     <script type="module" src="/src/main.jsx"></script>
 
-    <!-- 💬 Tawk.to Chat (async, deferred) -->
+    <!-- 💬 Tawk.to Chat -->
     <script>
       window.addEventListener("load", function () {
         var s1 = document.createElement("script");

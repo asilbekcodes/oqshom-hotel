@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap joyi
+Sitemap: https://oqshomhotel.uz/sitemap.xml
