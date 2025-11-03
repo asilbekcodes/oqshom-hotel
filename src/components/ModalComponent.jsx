@@ -90,7 +90,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
       {/* Ro‘yxatdan o‘tish modal */}
       {isRegisterModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 overflow-y-auto">
-          <div className="bg-white rounded-xl w-[90%] max-w-[800px] p-6 relative font-sans mt-24 mb-10">
+          <div className="bg-white rounded-xl w-[90%] max-w-[800px] p-6 relative font-sans mt-28 mb-10">
             <button
               onClick={() => setIsRegisterModal(false)}
               className="absolute top-3 right-4 text-3xl text-gray-500 hover:text-black"
