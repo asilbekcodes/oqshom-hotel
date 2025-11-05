@@ -95,5 +95,7 @@
   "firstname": "Ism",
   "phone": "Telefon raqami",
   "price": "Narxi",
-  "order_rooms": "Buyurtma qilish"
+  "order_rooms": "Buyurtma qilish",
+  "profil": "Profil", 
+  "login": "Kirish"
 }

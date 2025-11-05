@@ -95,5 +95,7 @@
   "firstname": "名",
   "phone": "电话号码",
   "price": "价格",
-  "order_rooms": "预订房间"
+  "order_rooms": "预订房间",
+  "profil": "个人资料", 
+  "login": "登录"
 }

@@ -50,14 +50,14 @@ function Header() {
         </div>
         {token ? (
           <a href="/profil" className="hover:text-accent transition">
-            Profil
+            {t("profil")}
           </a>
         ) : (
           <a
             onClick={() => setIsLogin(true)}
             className="hover:text-accent transition"
           >
-            Login
+            {t("login")}
           </a>
         )}
       </>

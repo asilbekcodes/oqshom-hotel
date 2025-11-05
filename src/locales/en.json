@@ -95,5 +95,7 @@
   "firstname": "First Name",
   "phone": "Phone Number",
   "price": "Price",
-  "order_rooms": "Order rooms"
+  "order_rooms": "Order rooms",
+  "profil": "Profile", 
+  "login": "Login"
 }
