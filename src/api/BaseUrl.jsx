@@ -9,7 +9,7 @@ const lang =
 
 // Axios instance yaratamiz
 export const api = axios.create({
-  baseURL: "http://api.oqshomplaza.uz/",
+  baseURL: "https://api.oqshomplaza.uz/",
   headers: {
     "Accept-Language": lang, // Backendga til yuboriladi
   },
