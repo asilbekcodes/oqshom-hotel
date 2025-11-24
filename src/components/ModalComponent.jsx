@@ -13,6 +13,9 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
   const [isCodeModalOpen, setIsCodeModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isRegisterModal, setIsRegisterModal] = useState(false);
+  const [isForgotModalOpen, setIsForgotModalOpen] = useState(false);
+  const [isResetModalOpen, setIsResetModalOpen] = useState(false);
+  const [isForgotFlow, setIsForgotFlow] = useState(false);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,8 +26,38 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
   const [citizenship, setCitizenship] = useState("");
   const [userId, setUserId] = useState("");
 
+  const validatePassword = (pwd) => {
+    const weakPasswords = [
+      "password",
+      "12345678",
+      "qwerty",
+      "abc12345",
+      "iloveyou",
+      "admin123",
+      "asdf1234",
+      "qwertyui",
+    ];
+
+    if (pwd.length < 8)
+      return "password_min_8";
+
+    if (weakPasswords.includes(pwd.toLowerCase()))
+      return "password_weak";
+
+    return null;
+  };
+
   const handleConfirmPhone = (e) => {
     e.preventDefault();
+    const pwdError = validatePassword(password);
+    if (pwdError) {
+      toast.error(t(pwdError));
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast.error(t("passwords_not_match"));
+      return;
+    }
     setIsLoading(true);
     api
       .post(`users/signup/`, {
@@ -39,11 +72,42 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
       .then((res) => {
         setUserId(res.data.user_id);
         setIsRegisterModal(false);
+        setIsForgotFlow(false);
         setIsCodeModalOpen(true);
         toast.success(t("success_register"));
       })
-      .catch(() => {
-        toast.error(t("error_occurred"));
+      .catch((error) => {
+        const message =
+          error.response?.data?.detail ||
+          error.response?.data?.message ||
+          error.response?.data?.error ||
+          error?.response?.data?.non_field_errors?.[0] ||
+          error.response?.data?.email?.[0] ||
+          t("error_occurred");
+        toast.error(message);
+      })
+      .finally(() => setIsLoading(false));
+  };
+
+  const handleForgotPassword = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    api
+      .post(`users/forgot-password/`, { email })
+      .then((res) => {
+        setUserId(res.data.user_id);
+        setIsForgotModalOpen(false);
+        setIsForgotFlow(true);
+        setIsCodeModalOpen(true);
+        toast.success(t("code_sent_to_email"));
+      })
+      .catch((error) => {
+        const message =
+          error.response?.data?.detail ||
+          error.response?.data?.message ||
+          error.response?.data?.error ||
+          t("error_occurred");
+        toast.error(message);
       })
       .finally(() => setIsLoading(false));
   };
@@ -59,12 +123,53 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
         localStorage.setItem("userToken", res.data.access);
         localStorage.setItem("refreshToken", res.data.refresh);
         setIsCodeModalOpen(false);
-        toast.success(t("success_login"));
+        setVerificationCode("");
+        if (isForgotFlow) {
+          setIsResetModalOpen(true);
+        } else {
+          toast.success(t("success_login"));
+          setIsLogin(false);
+        }
       })
       .catch(() => {
         setVerificationCode("");
         toast.error(t("code_incorrect"));
       });
+  };
+
+  const handleResetPassword = (e) => {
+    e.preventDefault();
+    const pwdError = validatePassword(password);
+    if (pwdError) {
+      toast.error(t(pwdError));
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast.error(t("passwords_not_match"));
+      return;
+    }
+    setIsLoading(true);
+    api
+      .put(`users/reset-password/`, {
+        new_password: password,
+        confirm_password: confirmPassword,
+      })
+      .then(() => {
+        setIsResetModalOpen(false);
+        toast.success(t("password_reset_success"));
+        setPassword("");
+        setConfirmPassword("");
+        setIsLogin(true); // Optionally reopen login modal
+      })
+      .catch((error) => {
+        const message =
+          error.response?.data?.detail ||
+          error.response?.data?.message ||
+          error.response?.data?.error ||
+          t("error_occurred");
+        toast.error(message);
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const handleLogin = (e) => {
@@ -80,8 +185,13 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
         setIsLogin(false);
         toast.success(t("success_login"));
       })
-      .catch(() => {
-        toast.error(t("error_occurred"));
+      .catch((error) => {
+        const message =
+          error.response?.data?.detail ||
+          error.response?.data?.message ||
+          error.response?.data?.error ||
+          t("error_occurred");
+        toast.error(message);
       });
   };
 
@@ -150,15 +260,20 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
                     }}
                   />
                 </div>
-                <Input
-                  type="password"
-                  label={t("password")}
-                  name="password"
-                  placeholder={t("password")}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
+                <div>
+                  <Input
+                    type="password"
+                    label={t("password")}
+                    name="password"
+                    placeholder={t("password")}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <p className="text-gray-600 text-sm mt-1">
+                    {t("password_hint")}
+                  </p>
+                </div>
                 <Input
                   type="password"
                   label={t("confirm_password")}
@@ -172,6 +287,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
               <button
                 className="btn btn-primary btn-sm w-full cursor-pointer my-5"
                 type="submit"
+                disabled={isLoading}
               >
                 {isLoading ? "Loading..." : t("sign_up")}
               </button>
@@ -186,6 +302,42 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
             >
               {t("have_account")} {t("login_here")}
             </p>
+          </div>
+        </div>
+      )}
+
+      {/* Forgot Password Modal */}
+      {isForgotModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white rounded-xl w-[90%] max-w-[450px] p-6 relative font-sans">
+            <button
+              onClick={() => setIsForgotModalOpen(false)}
+              className="absolute top-3 right-4 text-3xl text-gray-500 hover:text-black"
+            >
+              &times;
+            </button>
+            <h2 className="text-2xl font-semibold mb-2">{t("forgot_password")}</h2>
+            <p className="text-lg text-[#292929] mb-8">
+              {t("enter_email_to_reset")}
+            </p>
+            <form onSubmit={handleForgotPassword}>
+              <Input
+                type="email"
+                label={t("email")}
+                name="email"
+                placeholder={t("email")}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <button
+                type="submit"
+                className="btn btn-primary btn-sm w-full transition my-5"
+                disabled={isLoading}
+              >
+                {isLoading ? "Loading..." : t("send_code")}
+              </button>
+            </form>
           </div>
         </div>
       )}
@@ -214,7 +366,8 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
                 placeholder=""
                 classNames={{
                   container: "flex justify-center items-center gap-3",
-                  character: "w-12 h-12 border border-black rounded-md text-center",
+                  character:
+                    "w-12 h-12 border border-black rounded-md text-center",
                   characterInactive: "text-gray-400",
                   characterSelected: "border-blue-500",
                 }}
@@ -227,6 +380,53 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
             >
               {t("confirmation")}
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* Reset Password Modal */}
+      {isResetModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white rounded-xl w-[90%] max-w-[450px] p-6 relative font-sans">
+            <button
+              onClick={() => setIsResetModalOpen(false)}
+              className="absolute top-3 right-4 text-3xl text-gray-500 hover:text-black"
+            >
+              &times;
+            </button>
+            <h2 className="text-2xl font-semibold mb-2">{t("reset_password")}</h2>
+            <form onSubmit={handleResetPassword}>
+              <div>
+                <Input
+                  type="password"
+                  label={t("new_password")}
+                  name="password"
+                  placeholder={t("new_password")}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <p className="text-gray-600 text-sm mt-1">
+                  {t("password_hint")}
+                </p>
+              </div>
+              <Input
+                type="password"
+                label={t("confirm_password")}
+                name="confirmPassword"
+                placeholder={t("confirm_password")}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+              <button
+                type="submit"
+                className="btn btn-primary btn-sm w-full transition my-5"
+                disabled={isLoading}
+              >
+                {isLoading ? "Loading..." : t("reset_password")}
+              </button>
+            </form>
           </div>
         </div>
       )}
@@ -268,18 +468,28 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
                 {t("sign_in")}
               </button>
             </form>
-            <p className="text-center">
-              {t("dont_have_account")}{" "}
-              <span
+            <div className="flex justify-between items-center">
+              <p>
+                <span
+                  onClick={() => {
+                    onClose();
+                    setIsRegisterModal(true);
+                  }}
+                  className="text-blue-500 cursor-pointer"
+                >
+                  {t("register_here")}
+                </span>
+              </p>
+              <p
                 onClick={() => {
                   onClose();
-                  setIsRegisterModal(true);
+                  setIsForgotModalOpen(true);
                 }}
                 className="text-blue-500 cursor-pointer"
               >
-                {t("register_here")}
-              </span>
-            </p>
+                {t("forgot_password")}
+              </p>
+            </div>
           </div>
         </div>
       )}

@@ -96,6 +96,13 @@
   "phone": "Telefon raqami",
   "price": "Narxi",
   "order_rooms": "Buyurtma qilish",
-  "profil": "Profil", 
-  "login": "Kirish"
+  "profil": "Profil",
+  "login": "Kirish",
+  "password_min_8": "Parol kamida 8 ta belgidan iborat bo'lishi kerak.",
+  "password_must_contain_letters_symbols": "Parol harflar va maxsus belgilarni o'z ichiga olishi kerak.",
+  "passwords_not_match": "Parollar mos kelmaydi.",
+  "password_weak": "Bu parol juda keng tarqalgan. Boshqa parol tanlang.",
+  "password_hint": "Parol kamida 8 ta belgidan iborat bo'lishi va keng tarqalgan parol bo'lmasligi kerak.",
+  "forgot_password": "Parolni unutdim",
+  "enter_email_to_reset": "Parolni tiklash uchun elektron pochtangizni kiriting"
 }

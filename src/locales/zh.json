@@ -96,6 +96,13 @@
   "phone": "电话号码",
   "price": "价格",
   "order_rooms": "预订房间",
-  "profil": "个人资料", 
-  "login": "登录"
+  "profil": "个人资料",
+  "login": "登录",
+  "password_min_8": "密码必须至少8个字符。",
+  "password_must_contain_letters_symbols": "密码必须包含字母和特殊字符。",
+  "passwords_not_match": "密码不匹配。",
+  "password_weak": "此密码过于常见。请另选密码。",
+  "password_hint": "密码必须至少8个字符，且不得为常用密码。",
+  "forgot_password": "忘记密码",
+  "enter_email_to_reset": "输入您的电子邮箱以重置密码"
 }
