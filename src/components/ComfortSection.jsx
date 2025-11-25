@@ -1,6 +1,6 @@
 import React from "react";
 import DishImg from "../assets/img/gallery/dish.jpg";
-import MassageImg from "../assets/img/gallery/massage.jpg";
+import MassageImg from "../assets/img/gallery/photo_2025-11-25_15-45-01.jpg";
 import PoolImg from "../assets/img/gallery/pool.jpg";
 import SaunaImg from "../assets/img/gallery/sauna.jpg";
 import RestaurantImg from "../assets/img/gallery/restaurants.jpg";
@@ -40,6 +40,17 @@ const ComfortSection = () => {
             </div>
           </div>
 
+          <div className="col-span-2 md:col-span-1 md:row-span-2 relative rounded-lg overflow-hidden group">
+            <img
+              src={RestaurantImg}
+              alt="Restaurant"
+              className="w-full h-56 md:h-full object-cover group-hover:scale-110 duration-300 transition-all"
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white px-3 py-2">
+              {t("restaurant")}
+            </div>
+          </div>
+
           <div className="relative rounded-lg overflow-hidden group">
             <img
               src={PoolImg}
@@ -63,16 +74,7 @@ const ComfortSection = () => {
             </div>
           </div>
 
-          <div className="col-span-2 relative rounded-lg overflow-hidden group">
-            <img
-              src={RestaurantImg}
-              alt="Restaurant"
-              className="w-full h-56 object-cover group-hover:scale-110 duration-300 transition-all"
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white px-3 py-2">
-              {t("restaurant")}
-            </div>
-          </div>
+          
         </div>
       </Animation>
     </section>
