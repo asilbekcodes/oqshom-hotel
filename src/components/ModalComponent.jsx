@@ -68,6 +68,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
         last_name: lastName,
         phone_number,
         citizenship,
+        is_consent: true,
       })
       .then((res) => {
         setUserId(res.data.user_id);
