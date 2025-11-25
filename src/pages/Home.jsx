@@ -43,8 +43,8 @@ function Home() {
           </div>
         </div>
       </div> */}
-      <div className="z-0 ">
-      </div>
+      {/* <div className="z-0 ">
+      </div> */}
     </div>
   );
 }

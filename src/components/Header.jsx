@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import LogoDark from "../assets/img/logo-dark.svg";
-import LogoWhite from "../assets/img/logo-white.svg";
 import { FiMenu, FiX } from "react-icons/fi"; // Hamburger va Close icon
 import ModalComponent from "./ModalComponent";
 import LanguageSelector from "./LanguageSelector";

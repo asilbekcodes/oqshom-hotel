@@ -104,5 +104,14 @@
   "password_weak": "Bu parol juda keng tarqalgan. Boshqa parol tanlang.",
   "password_hint": "Parol kamida 8 ta belgidan iborat bo'lishi va keng tarqalgan parol bo'lmasligi kerak.",
   "forgot_password": "Parolni unutdim",
-  "enter_email_to_reset": "Parolni tiklash uchun elektron pochtangizni kiriting"
+  "enter_email_to_reset": "Parolni tiklash uchun elektron pochtangizni kiriting",
+  "footer_description": "Oqshom Plaza mehmonxonasi sizga qulaylik, zamonaviy xizmatlar va mehmondo‘stlikni taqdim etadi. Biz biznes va dam olish mehmonlari uchun mukammal joylashuv, professional xizmat va iliq muhit yaratishga intilamiz.",
+  "about_title": "biz haqimizda",
+  "about_description": "Bizning mehmonxonada sizning dam olishingizni ajoyib qilish uchun hamma narsani qilishga harakat qilamiz.",
+  "hero_title": "Dam olish uchun sizning hashamatli mehmonxonangiz",
+  "hero_description": "shunchaki zavqlaning va dam oling",
+  "logout": "Tizimdan chiqish",
+  "phone_label": "Telefon:",
+  "hotel_email": "Mehmonxona email:",
+  "address_label": "Manzil:"
 }

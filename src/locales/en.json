@@ -104,5 +104,14 @@
   "password_weak": "This password is too common. Please choose another password.",
   "password_hint": "The password must be at least 8 characters long and must not be a commonly used password.",
   "forgot_password": "Forgot Password",
-  "enter_email_to_reset": "Enter your email to reset your password"
+  "enter_email_to_reset": "Enter your email to reset your password",
+  "footer_description": "Oqshom Plaza Hotel offers you convenience, modern services and hospitality. We strive to create the perfect location, professional service and warm atmosphere for business and leisure guests.",
+  "about_title": "about us",
+  "about_description": "At our hotel, we strive to do everything we can to make your stay exceptional.",
+  "hero_title": "Your luxury hotel for vacation",
+  "hero_description": "just enjoy and relax",
+  "logout": "Logout",
+  "phone_label": "Phone:",
+  "hotel_email": "Hotel Email:",
+  "address_label": "Address:"
 }

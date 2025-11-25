@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from "react";
+import { useState, lazy, Suspense, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -39,6 +39,16 @@ function App() {
   const closeModal = () => setIsModalOpen(false);
 
   const { t } = useTranslation();
+
+   useEffect(() => {
+    if (isModalOpen) {
+      const timer = setTimeout(() => {
+        setIsModalOpen(false); // 15 sekunddan keyin yopiladi
+      }, 10000);
+
+      return () => clearTimeout(timer); // cleanup
+    }
+  }, [isModalOpen]);
 
   return (
     <div>

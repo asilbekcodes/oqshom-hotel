@@ -39,7 +39,7 @@ function ContactAndMapView() {
         <div className="space-y-4 mb-8">
           <div className="flex flex-col sm:flex-row sm:items-start">
             <span className="font-semibold text-gray-600 min-w-[140px] mb-1 sm:mb-0">
-              Phone:
+              {t("phone_label")}
             </span>
             <div className="flex flex-col">
               <span className="text-gray-800">+998 88 900 66 66</span>
@@ -49,7 +49,7 @@ function ContactAndMapView() {
 
           <div className="flex flex-col sm:flex-row sm:items-start">
             <span className="font-semibold text-gray-600 min-w-[140px] mb-1 sm:mb-0">
-              Hotel Email:
+              {t("hotel_email")}
             </span>
             <a
               href="mailto:info.PADTH@palacehotels.com"
@@ -85,7 +85,7 @@ function ContactAndMapView() {
 
           <div className="flex flex-col sm:flex-row sm:items-start">
             <span className="font-semibold text-gray-600 min-w-[140px] mb-1 sm:mb-0">
-              Address:
+              {t("address_label")}
             </span>
             <span className="text-gray-800">
               {t("address")}

@@ -104,5 +104,14 @@
   "password_weak": "此密码过于常见。请另选密码。",
   "password_hint": "密码必须至少8个字符，且不得为常用密码。",
   "forgot_password": "忘记密码",
-  "enter_email_to_reset": "输入您的电子邮箱以重置密码"
+  "enter_email_to_reset": "输入您的电子邮箱以重置密码",
+  "footer_description": "奥克肖姆广场酒店为您提供便利、现代服务和热情款待。我们致力于为商务和休闲客人创造完美的位置、专业服务和温暖的环境。",
+  "about_title": "关于我们",
+  "about_description": "在我们的酒店，我们努力尽一切可能让您的住宿变得非凡。",
+  "hero_title": "您的度假豪华酒店",
+  "hero_description": "只需享受并放松",
+  "logout": "登出",
+  "phone_label": "电话:",
+  "hotel_email": "酒店邮箱:",
+  "address_label": "地址:"
 }

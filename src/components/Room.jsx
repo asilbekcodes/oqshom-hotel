@@ -62,7 +62,7 @@ function Room({ room }) {
       </div>
       <Link
         to={`/room/${id}`}
-        className="btn btn-secondary btn-sm max-w-[290px] mx-auto"
+        className="btn btn-secondary btn-sm max-w-[300px] mx-auto p-0"
       >
         {t("book_now", { price: formattedPrice })}
       </Link>

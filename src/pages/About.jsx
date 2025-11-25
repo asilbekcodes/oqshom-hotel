@@ -9,10 +9,10 @@ import { api } from "../api/BaseUrl";
 import { useTranslation } from "react-i18next";
 
 function About() {
+  const { t } = useTranslation();
   const data = {
-    title: "about us",
-    description:
-      "At our hotel, we strive to do everything we can to make your stay exceptional.",
+    title: t("about_title"),
+    description: t("about_description"),
     image: bgImg,
   };
 
@@ -21,7 +21,6 @@ function About() {
     additionalData?.find((item) => item.page === "about")?.additional || [];
 
   const [count, setCount] = useState([]);
-  const { t } = useTranslation();
 
   const countData = () => {
     api

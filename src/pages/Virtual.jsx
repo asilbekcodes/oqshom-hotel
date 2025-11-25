@@ -61,7 +61,7 @@ function Virtual() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                   <div className="flex justify-center items-center absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button
+                    {/* <button
                       onClick={() =>
                         openModal(
                           room.url
@@ -70,7 +70,7 @@ function Virtual() {
                       className="text-white"
                     >
                       <IoEye className="text-5xl" />
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               ))}

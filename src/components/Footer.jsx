@@ -48,7 +48,7 @@ function Footer() {
         </div>
         <div>
           <p className="text-lg text-white mb-5">
-            Oqshom Plaza mehmonxonasi sizga qulaylik, zamonaviy xizmatlar va mehmondo‘stlikni taqdim etadi. Biz biznes va dam olish mehmonlari uchun mukammal joylashuv, professional xizmat va iliq muhit yaratishga intilamiz.
+            {t("footer_description")}
           </p>
         </div>
 

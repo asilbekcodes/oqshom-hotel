@@ -13,30 +13,31 @@ import { useHotelContext } from "../context/HeroSlider";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-const slides = [
-  {
-    title: "Your luxuary hotel for vacation",
-    image: Img1,
-    description: "just enjoy and relax",
-  },
-  {
-    title: "Your luxuary hotel for vacation",
-    image: Img2,
-    description: "just enjoy and relax",
-  },
-  {
-    title: "Your luxuary hotel for vacation",
-    image: Img3,
-    description: "just enjoy and relax",
-  },
-];
-
 function HeroSlider() {
   const { additionalData, loading, error } = useHotelContext();
   const homeData =
     additionalData?.find((item) => item.page === "home")?.additional || [];
-  const slidesToShow = homeData.length > 0 ? homeData : slides;
   const { t } = useTranslation();
+
+  const slides = [
+    {
+      title: t("hero_title"),
+      image: Img1,
+      description: t("hero_description"),
+    },
+    {
+      title: t("hero_title"),
+      image: Img2,
+      description: t("hero_description"),
+    },
+    {
+      title: t("hero_title"),
+      image: Img3,
+      description: t("hero_description"),
+    },
+  ];
+
+  const slidesToShow = homeData.length > 0 ? homeData : slides;
 
   return (
     <Swiper

@@ -137,7 +137,7 @@ function Profil() {
                     />
                   </div>
                 </form>
-                <p onClick={logout} className="text-lg text-red-600 mt-6 cursor-pointer">Tizimdan chiqish</p>
+                <p onClick={logout} className="text-lg text-red-600 mt-6 cursor-pointer">{t("logout")}</p>
               </div>
             )}
 

@@ -181,9 +181,9 @@ function Contact() {
         </div>
       </div>
 
-      <div className="z-20 relative mt-10">
+      {/* <div className="z-20 relative mt-10">
         <MapView />
-      </div>
+      </div> */}
     </div>
   );
 }
