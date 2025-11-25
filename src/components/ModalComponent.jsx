@@ -121,8 +121,8 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
     api
       .post(`users/verify/`, { user_id: userId, code: verificationCode })
       .then((res) => {
-        localStorage.setItem("userToken", res.data.access);
-        localStorage.setItem("refreshToken", res.data.refresh);
+        localStorage.setItem("userToken", res.data.data.access);
+        localStorage.setItem("refreshToken", res.data.data.refresh);
         setIsCodeModalOpen(false);
         setVerificationCode("");
         if (isForgotFlow) {

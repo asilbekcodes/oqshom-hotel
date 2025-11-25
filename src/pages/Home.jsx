@@ -29,8 +29,9 @@ function Home() {
         <ComfortSection />
         <Travel />
         <FotoGalereya />
+        <MapView />
       </div>
-      <div className="container mx-auto">
+      {/* <div className="container mx-auto">
         <div className="flex justify-between flex-wrap">
           <div>
             <h2 className="text-4xl mb-0">{t("title")}</h2>
@@ -41,9 +42,8 @@ function Home() {
             <p>+998 90 879 02 03</p>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="z-0 ">
-        <MapView />
       </div>
     </div>
   );

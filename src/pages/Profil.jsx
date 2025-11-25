@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { api } from "../api/BaseUrl";
 import img from "../assets/img/rooms/7-lg.png";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 function Profil() {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("profile");
   const [data, setData] = useState({});
   const [orders, setOrders] = useState([]);
+  const navigate = useNavigate();
 
   const token = localStorage.getItem("userToken");
 
@@ -49,6 +51,12 @@ function Profil() {
     profileData();
     orderData();
   }, []);
+
+  const logout = () => {
+    localStorage.removeItem("userToken");
+    navigate("/");
+    window.location.reload();
+  };
 
   return (
     <div>
@@ -129,6 +137,7 @@ function Profil() {
                     />
                   </div>
                 </form>
+                <p onClick={logout} className="text-lg text-red-600 mt-6 cursor-pointer">Tizimdan chiqish</p>
               </div>
             )}
 

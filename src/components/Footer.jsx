@@ -27,25 +27,6 @@ function Footer() {
   const currentYear = new Date().getFullYear();
   const { t } = useTranslation();
 
-  const paymentLogos = [
-    {
-      name: "Humo",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb1mcSV7yZ6JhxTR1roN8aiQozP-oLJuJBAw&s",
-    },
-    {
-      name: "Mastercard",
-      src: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg",
-    },
-    {
-      name: "Uzcard",
-      src: "https://bank.uz/upload/yp/static/058/0584015c28a78f817d6385b99ed3680a.jpg",
-    },
-    {
-      name: "Visa",
-      src: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg",
-    },
-  ];
-
   const [links, setLinks] = useState([]);
 
   useEffect(() => {    
@@ -60,13 +41,18 @@ function Footer() {
 
   return (
     <footer className="bg-black py-8 text-white">
-      <div className="container mx-auto flex flex-col items-center gap-6 text-sm md:flex-row md:justify-between">
+      <div className="container mx-auto flex flex-col">
         {/* Address */}
         <div className="text-center md:text-left font-semibold">
           <img className="w-44" src={oqshom_logo} alt="logo" />
         </div>
+        <div>
+          <p className="text-lg text-white mb-5">
+            Oqshom Plaza mehmonxonasi sizga qulaylik, zamonaviy xizmatlar va mehmondo‘stlikni taqdim etadi. Biz biznes va dam olish mehmonlari uchun mukammal joylashuv, professional xizmat va iliq muhit yaratishga intilamiz.
+          </p>
+        </div>
 
-        {/* Social Icons */}
+              {/* Social Icons */}
         <div className="flex gap-4">
           {links.map((item) => {
             const Icon = iconMap[item.name.toLowerCase()];
@@ -85,36 +71,10 @@ function Footer() {
             );
           })}
         </div>
-
-        {/* Contact */}
-        <div className="text-center md:text-right">
-          <a
-            href="mailto:oqshomplaza@mail.ru"
-            className="text-[#5A9A97] font-semibold hover:underline"
-          >
-            oqshomplaza@mail.ru
-          </a>
-          <br />
-          <a href="#" className="font-semibold hover:underline">
-            {t("public_offer")}
-          </a>
-        </div>
-      </div>
-
-      {/* Payment Logos */}
-      <div className="mt-6 flex justify-center flex-wrap">
-        {paymentLogos.map((logo, i) => (
-          <img
-            key={i}
-            src={logo.src}
-            alt={logo.name}
-            className="h-10 w-20 object-contain rounded-md px-2 py-1"
-          />
-        ))}
       </div>
 
       {/* Scroll to top */}
-      <div className="mt-6 flex justify-center">
+      <div className="mt-10 flex justify-center">
         <div
           className="border-2 border-white p-2 rounded-md cursor-pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
