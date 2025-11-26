@@ -1,5 +1,3 @@
-import { useTransition } from "react";
-import { RoomContext } from "../context/RoomContext";
 import Room from "./Room";
 import { ClipLoader } from "react-spinners";
 import Animation from "./Animation";
@@ -8,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 function Rooms() {
   const { rooms, loading } = useRoomsContext();
-  const { t } = useTranslation();  
+  const { t } = useTranslation();
   return (
     <section className="py-24">
       {loading && (
@@ -20,15 +18,22 @@ function Rooms() {
         <Animation dataAos="zoom-out">
           <div className="text-center">
             <div className="font-tertiary uppercase tracking-[6px] text-[15px] text-accent">
-               {t("hotel_name")}
+              {t("hotel_name")}
             </div>
-            <h2 className="font-primary text-[45px] mb-4"> {t("rooms_title")}</h2>
+            <h2 className="font-primary text-[45px] mb-4">
+              {" "}
+              {t("rooms_title")}
+            </h2>
           </div>
         </Animation>
         <Animation dataAos="zoom-in">
-          <div className="grid grid-cols-1 max-w-sm mx-auto gap-[30px] lg:grid-cols-3 lg:max-w-none lg:mx-0">
+          <div className="flex flex-wrap justify-center gap-[30px] max-w-sm mx-auto lg:max-w-none lg:mx-0">
             {rooms?.map((room) => {
-              return <Room key={room.id} room={room} />;
+              return (
+                <div key={room.id} className="w-full lg:w-[calc(33.333%-20px)]">
+                  <Room room={room} />
+                </div>
+              );
             })}
           </div>
         </Animation>

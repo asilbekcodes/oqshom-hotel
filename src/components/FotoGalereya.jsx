@@ -5,14 +5,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 
-import img1 from "../assets/img/serveces/spa1.jpg";
-import img2 from "../assets/img/serveces/conference2.jpg";
-import img3 from "../assets/img/serveces/hotel1.jpg";
-import img4 from "../assets/img/serveces/24-hourServices2.jpg";
-import img5 from "../assets/img/serveces/restaurant2.jpg";
-import img6 from "../assets/img/heroSlider/rooms.jpg";
-import img7 from "../assets/img/rooms/7-lg.png";
-
 import { api } from "../api/BaseUrl"; // baseUrl = "http://your-api.com/api/" kabi bo‘lishi kerak
 import { useTranslation } from "react-i18next";
 
@@ -22,8 +14,7 @@ function FotoGalereya() {
   const [galleryImages, setGalleryImages] = useState([]);
   const { t } = useTranslation();
 
-  const localImages = [img1, img2, img3, img4, img5, img6, img7];
-  const imagesToShow = galleryImages?.length > 0 ? galleryImages : localImages;
+  const imagesToShow = galleryImages;
 
   const fetchGallery = async () => {
     try {

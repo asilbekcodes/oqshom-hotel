@@ -1,8 +1,6 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import HeroServeces from "../components/HeroServeces";
 import bgImg from "../assets/img/heroSlider/rooms.jpg";
-import { RoomContext } from "../context/RoomContext";
-import { IoEye } from "react-icons/io5";
 import Animation from "../components/Animation";
 import { useHotelContext } from "../context/HeroSlider";
 import { useRoomsContext } from "../context/RoomsContext";

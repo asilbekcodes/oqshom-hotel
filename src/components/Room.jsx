@@ -22,7 +22,7 @@ function Room({ room }) {
   const currencySymbol = currentLang === "uz" ? "so'm" : "";
   const formattedPrice = `${price} ${currencySymbol}`;
   return (
-    <div className="bg-white shadow-2xl min-h-[500px] group">
+    <div className="bg-white shadow-2xl min-h-[500px] w-full group">
       <div className="overflow-hidden">
         <img
           className="group-hover:scale-110 duration-300 w-full h-[250px] transition-all"
