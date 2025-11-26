@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../api/BaseUrl";
-import img from "../assets/img/rooms/7-lg.png";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -157,7 +156,7 @@ function Profil() {
                     >
                       <img
                         className="object-cover w-full h-full rounded-t-lg md:w-1/3 md:h-auto md:rounded-none md:rounded-s-lg"
-                        src={item.roomData?.main_image || img}
+                        src={item.roomData?.main_image}
                         alt={item.roomData?.title || "Room"}
                       />
                       <div className="flex flex-col justify-between p-4 leading-normal">

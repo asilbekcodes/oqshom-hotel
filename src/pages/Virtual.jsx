@@ -42,11 +42,11 @@ function Virtual() {
         <Animation dataAos="zoom-in">
           <div className="my-16">
             <h2 className="h2">Virtual Tour of the Rooms</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            <div className="flex flex-wrap justify-center gap-[30px] max-w-sm mx-auto lg:max-w-none lg:mx-0">
               {rooms?.map((room) => (
                 <div
                   key={room.id}
-                  className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+                  className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 w-full lg:w-[calc(33.333%-20px)]"
                 >
                   <div className="aspect-[4/3] overflow-hidden">
                     <img

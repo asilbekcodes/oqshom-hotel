@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HeroServeces from "../components/HeroServeces";
-import bgImg from "../assets/img/serveces/spa2.jpg";
+import bgImg from "../assets/img/heroSlider/1.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
