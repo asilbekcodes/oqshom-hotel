@@ -4,13 +4,18 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 function Profil() {
-  const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState("profile");
+  const { t, i18n } = useTranslation();
+  const [activeTab, setActiveTab] = useState("orders");
   const [data, setData] = useState({});
   const [orders, setOrders] = useState([]);
   const navigate = useNavigate();
 
   const token = localStorage.getItem("userToken");
+
+    const currentLang = i18n.language; // hozirgi tilni olish (masalan: 'uz' yoki 'en')
+  
+    // Tilga qarab valyuta belgisi
+    const currencySymbol = currentLang === "uz" ? "UZS" : "$";
 
   const profileData = () => {
     api
@@ -175,7 +180,7 @@ function Profil() {
                           {t("check_out")}: {item.end_date}
                         </p>
                         <p className="font-normal">
-                          {t("price")}: {item.roomData?.price} UZS
+                          {t("price")}: {item.roomData?.price} {currencySymbol}
                         </p>
                       </div>
                     </div>

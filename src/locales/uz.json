@@ -113,5 +113,14 @@
   "logout": "Tizimdan chiqish",
   "phone_label": "Telefon:",
   "hotel_email": "Mehmonxona email:",
-  "address_label": "Manzil:"
+  "address_label": "Manzil:",
+  "my_booking": "Mening bronim",
+  "last_booked_room": "Buyurtmangiz uchun rahmat!",
+  "loading": "Yuklanmoqda...",
+  "no_bookings": "Bronlar topilmadi.",
+  "user_not_logged_in": "Foydalanuvchi tizimga kirmagan",
+  "failed_fetch_bookings": "Bronlarni yuklab bo'lmadi",
+  "check_in_date": "Kirish sanasi:",
+  "check_out_date": "Chiqish sanasi:",
+  "room_price": "Narxi:"
 }

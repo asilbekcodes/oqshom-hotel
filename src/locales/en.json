@@ -113,5 +113,14 @@
   "logout": "Logout",
   "phone_label": "Phone:",
   "hotel_email": "Hotel Email:",
-  "address_label": "Address:"
+  "address_label": "Address:",
+  "my_booking": "My Booking",
+  "last_booked_room": "Thank you for your order!",
+  "loading": "Loading...",
+  "no_bookings": "No bookings found.",
+  "user_not_logged_in": "User not logged in",
+  "failed_fetch_bookings": "Failed to fetch bookings",
+  "check_in_date": "Check-in:",
+  "check_out_date": "Check-out:",
+  "room_price": "Price:"
 }

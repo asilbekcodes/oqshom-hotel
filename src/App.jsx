@@ -18,6 +18,7 @@ const Spa = lazy(() => import("./pages/Spa"));
 const Virtual = lazy(() => import("./pages/Virtual"));
 const Profil = lazy(() => import("./pages/Profil"));
 const FilterRooms = lazy(() => import("./pages/FilterRooms"));
+const MyBooking = lazy(() => import("./pages/MyBooking"));
 
 // 🔹 Router
 const router = createBrowserRouter([
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
   { path: "/virtual", element: <Virtual /> },
   { path: "/profil", element: <Profil /> },
   { path: "/rooms", element: <FilterRooms /> },
+  { path: "/my-booking", element: <MyBooking /> },
 ]);
 
 function App() {

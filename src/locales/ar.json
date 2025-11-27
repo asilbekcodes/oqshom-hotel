@@ -113,5 +113,14 @@
   "logout": "تسجيل الخروج",
   "phone_label": "الهاتف:",
   "hotel_email": "بريد الفندق الإلكتروني:",
-  "address_label": "العنوان:"
+  "address_label": "العنوان:",
+  "my_booking": "حجزي",
+  "last_booked_room": "شكرًا لطلبكم!",
+  "loading": "جارٍ التحميل...",
+  "no_bookings": "لم يتم العثور على حجوزات.",
+  "user_not_logged_in": "المستخدم غير مسجل الدخول",
+  "failed_fetch_bookings": "فشل في تحميل الحجوزات",
+  "check_in_date": "تسجيل الوصول:",
+  "check_out_date": "تسجيل المغادرة:",
+  "room_price": "السعر:"
 }

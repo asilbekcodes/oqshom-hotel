@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
 import ScrollToTop from "../components/ScrollToTop";
 import { api } from "../api/BaseUrl";
@@ -26,6 +26,7 @@ function RoomDetails() {
   const [isLogin, setIsLogin] = useState(false);
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language; // hozirgi tilni olish (masalan: 'uz' yoki 'en')
+  const navigate = useNavigate();
 
   const getRooms = async () => {
     try {
@@ -79,6 +80,7 @@ function RoomDetails() {
         }
       )
       .then((res) => {
+        navigate("/my-booking");
         toast.success("Succes booking");
       })
       .catch((err) => {

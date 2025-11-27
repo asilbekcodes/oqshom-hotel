@@ -113,5 +113,14 @@
   "logout": "Выйти",
   "phone_label": "Телефон:",
   "hotel_email": "Email отеля:",
-  "address_label": "Адрес:"
+  "address_label": "Адрес:",
+  "my_booking": "Моё бронирование",
+  "last_booked_room": "Спасибо за ваш заказ!",
+  "loading": "Загрузка...",
+  "no_bookings": "Бронирования не найдены.",
+  "user_not_logged_in": "Пользователь не вошёл в систему",
+  "failed_fetch_bookings": "Не удалось загрузить бронирования",
+  "check_in_date": "Заезд:",
+  "check_out_date": "Выезд:",
+  "room_price": "Цена:"
 }

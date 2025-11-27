@@ -113,5 +113,14 @@
   "logout": "登出",
   "phone_label": "电话:",
   "hotel_email": "酒店邮箱:",
-  "address_label": "地址:"
+  "address_label": "地址:",
+  "my_booking": "我的预订",
+  "last_booked_room": "感谢您的订单！",
+  "loading": "加载中...",
+  "no_bookings": "未找到预订。",
+  "user_not_logged_in": "用户未登录",
+  "failed_fetch_bookings": "获取预订失败",
+  "check_in_date": "入住:",
+  "check_out_date": "退房:",
+  "room_price": "价格:"
 }
