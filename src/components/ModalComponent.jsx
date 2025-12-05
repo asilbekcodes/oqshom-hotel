@@ -270,6 +270,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                    enablePasswordToggle
                   />
                   <p className="text-gray-600 text-sm mt-1">
                     {t("password_hint")}
@@ -283,6 +284,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
+                  enablePasswordToggle
                 />
               </div>
               <button
@@ -406,6 +408,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                  enablePasswordToggle
                 />
                 <p className="text-gray-600 text-sm mt-1">
                   {t("password_hint")}
@@ -419,6 +422,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
+                enablePasswordToggle
               />
               <button
                 type="submit"
@@ -461,6 +465,7 @@ function ModalComponent({ isLoginModal, onClose, setIsLogin }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                enablePasswordToggle
               />
               <button
                 type="submit"
